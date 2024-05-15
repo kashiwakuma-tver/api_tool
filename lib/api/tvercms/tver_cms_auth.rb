@@ -12,8 +12,6 @@ class TverCmsAuth
     apiheaders
   end
 
-  private
-
   def cookie_manager_tver
     driver_options = Selenium::WebDriver::Chrome::Options.new
     driver_options.add_argument("--user-data-dir=#{USER_DATA_DIR}")

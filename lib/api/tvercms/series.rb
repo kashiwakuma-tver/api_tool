@@ -1,21 +1,21 @@
-class Episode
+class Series
   require_relative 'tver_cms_auth'
   require_relative '../base'
 
-  END_POINT = '/api/episode/vod'.freeze
+  END_POINT = '/api/series'.freeze
 
-  def exec_vod_episode_api
-    episode_id = ARGV[0]
-    if episode_id
-      vod_episode_single(episode_id)
+  def exec_vod_series_api
+    series_id = ARGV[0]
+    if series_id
+      vod_series_single(series_id)
     else
-      vod_episode_all
+      vod_series_all
     end
   end
 
   private
 
-  def vod_episode_all
+  def vod_series_all
     tca = TverCmsAuth.new
     con = tca.make_faraday_header_for_auth
     response = con.get(END_POINT) do |req|
@@ -26,13 +26,14 @@ class Episode
     BASE.output_json(Series.name, result)
   end
 
-  def vod_episode_single(vod_episode_id)
+  def vod_series_single(vod_series_id)
     tca = TverCmsAuth.new
     con = tca.make_faraday_header_for_auth
-    response = con.get("#{END_POINT}/#{vod_episode_id}") do |req|
+    response = con.get("#{END_POINT}/#{vod_series_id}") do |req|
       # requestパラメータ指定したければする
       req.params['']
     end
+    puts response.body
     result = JSON.pretty_generate(JSON.parse(response.body)['result'])
     BASE.output_json(Series.name, result)
   end
