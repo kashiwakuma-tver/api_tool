@@ -5,18 +5,16 @@ class TverCmsAuth
   USER_DATA_DIR = '/Users/kashiwakuma/selenium_chrome_profile/'.freeze
 
   def make_faraday_header_for_auth
-    cookie = cookie_tvercms
-
     apiheaders = Faraday.new(url: ENV['DEV_TVER_CMS_URL']) do |c| # rubocop:disable Style/RedundantAssignment
       c.headers['Content-Type'] = 'application/json'
-      c.headers['cookie'] = "manager-tver=#{cookie}"
+      c.headers['cookie'] = "manager-tver=#{cookie_manager_tver}"
     end
     apiheaders
   end
 
   private
 
-  def cookie_tvercms
+  def cookie_manager_tver
     driver_options = Selenium::WebDriver::Chrome::Options.new
     driver_options.add_argument("--user-data-dir=#{USER_DATA_DIR}")
     implicit_wait = 3

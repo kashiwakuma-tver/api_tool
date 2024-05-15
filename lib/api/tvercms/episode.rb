@@ -3,7 +3,7 @@ class Episode
 
   END_POINT = '/api/episode/vod'.freeze
 
-  def self.exec_vod_episode_api
+  def exec_vod_episode_api
     episode_id = ARGV[0]
     if episode_id
       vod_episode_single(ARGV[0])
@@ -12,14 +12,16 @@ class Episode
     end
   end
 
-  def self.vod_episode_all
+  private
+
+  def vod_episode_all
     tca = TverCmsAuth.new
     con = tca.make_faraday_header_for_auth
     response = con.get(END_POINT)
     puts response.body
   end
 
-  def self.vod_episode_single(vod_episode_id)
+  def vod_episode_single(vod_episode_id)
     tca = TverCmsAuth.new
     con = tca.make_faraday_header_for_auth
     response = con.get("#{END_POINT}/#{vod_episode_id}")
@@ -27,4 +29,3 @@ class Episode
   end
 end
 
-Episode.exec_vod_episode_api
