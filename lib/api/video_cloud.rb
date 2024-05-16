@@ -2,7 +2,7 @@ class VideoCloud
   require_relative 'base'
 
   def exec
-    accress_token = create_access_token
+    accress_token = create_access_token # rubocop:disable Lint/UselessAssignment
   end
 
   private

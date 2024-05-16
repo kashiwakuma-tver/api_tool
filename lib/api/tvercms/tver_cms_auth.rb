@@ -4,8 +4,24 @@ class TverCmsAuth
   GOOGLE_AUTH_XPATH = '//*[@id="root"]/div[1]/div[1]/div[2]/div/div[2]/div/div/div[1]/div/div[3]/a/img'.freeze
   USER_DATA_DIR = '/Users/kashiwakuma/selenium_chrome_profile/'.freeze
 
+  def define_url
+    environment = BASE.args[:environment]
+    case environment
+    when 'DEV'
+      ENV['DEV_TVER_CMS_URL']
+    when 'STG'
+      ENV['STG_TVER_CMS_URL']
+    when 'PRD'
+      ENV['PRD_TVER_CMS_URL']
+    else
+      exit
+    end
+  end
+
   def make_faraday_header_for_auth
-    apiheaders = Faraday.new(url: ENV['DEV_TVER_CMS_URL']) do |c| # rubocop:disable Style/RedundantAssignment
+    puts "cookie_manager_tver: #{cookie_manager_tver}"
+    puts "define_url: #{define_url}"
+    apiheaders = Faraday.new(url: define_url) do |c| # rubocop:disable Style/RedundantAssignment
       c.headers['Content-Type'] = 'application/json'
       c.headers['cookie'] = "manager-tver=#{cookie_manager_tver}"
     end
@@ -26,7 +42,7 @@ class TverCmsAuth
     driver = Selenium::WebDriver.for(:chrome, options: driver_options)
     driver.manage.timeouts.implicit_wait = implicit_wait
 
-    driver.get(ENV['DEV_TVER_CMS_URL'])
+    driver.get(define_url)
 
     unless driver.find_elements(:xpath, GOOGLE_AUTH_XPATH).empty?
       gauth_element = driver.find_element(:xpath, GOOGLE_AUTH_XPATH)

@@ -5,7 +5,7 @@ class Series
   END_POINT = '/api/series'.freeze
 
   def exec_vod_series_api
-    series_id = ARGV[0]
+    series_id = BASE.args[:id]
     if series_id
       vod_series_single(series_id)
     else

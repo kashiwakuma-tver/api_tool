@@ -5,10 +5,33 @@ module BASE
   require 'selenium-webdriver'
 
   class << self
+    def args
+      args = { environment: ARGV[0], id: ARGV[1] }
+      args unless args_check(args)
+    end
+
     def output_json(class_name, result)
       timestamp = Time.now.strftime('%Y%m%d%H%M%S')
-      File.open("#{class_name}_#{timestamp}.json", 'w') do |f|
+      file_name = "#{args[:environment]}_#{class_name}_#{timestamp}.json"
+      File.open(file_name, 'w') do |f|
         f.write(result)
+      end
+      puts "#{file_name}を出力しました"
+    end
+
+    private
+
+    def args_check(args)
+      unless %w[DEV STG PRD].include?(args[:environment])
+        puts '環境を正しく入れてください'
+        exit
+      end
+
+      if args[:id]
+        unless (args[:id].start_with?(/ep|sr/) && args[:id].length == 10)
+          puts 'エピソードまたはシリーズのIDを正しくいれてください'
+          exit
+        end
       end
     end
   end
