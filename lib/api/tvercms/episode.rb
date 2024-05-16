@@ -17,7 +17,7 @@ class Episode
 
   def vod_episode_all
     tca = TverCmsAuth.new
-    con = tca.make_faraday_header_for_auth
+    con = tca.craete_apiheaders_for_auth
     response = con.get(END_POINT) do |req|
       # requestパラメータ指定したければする
       req.params['']
@@ -28,7 +28,7 @@ class Episode
 
   def vod_episode_single(vod_episode_id)
     tca = TverCmsAuth.new
-    con = tca.make_faraday_header_for_auth
+    con = tca.craete_apiheaders_for_auth
     response = con.get("#{END_POINT}/#{vod_episode_id}") do |req|
       # requestパラメータ指定したければする
       req.params['']

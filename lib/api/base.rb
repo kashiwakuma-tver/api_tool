@@ -22,11 +22,6 @@ module BASE
     private
 
     def args_check(args)
-      unless %w[DEV STG PRD].include?(args[:environment])
-        puts '環境を正しく入れてください'
-        exit
-      end
-
       if args[:id]
         unless (args[:id].start_with?(/ep|sr/) && args[:id].length == 10)
           puts 'エピソードまたはシリーズのIDを正しくいれてください'

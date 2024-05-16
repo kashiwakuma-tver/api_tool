@@ -18,17 +18,17 @@ class TverCmsAuth
     end
   end
 
-  def make_faraday_header_for_auth
-    puts "cookie_manager_tver: #{cookie_manager_tver}"
+  def craete_apiheaders_for_auth
+    puts "cookie_manager_tver: #{manager_tver_cookie_value}"
     puts "define_url: #{define_url}"
     apiheaders = Faraday.new(url: define_url) do |c| # rubocop:disable Style/RedundantAssignment
       c.headers['Content-Type'] = 'application/json'
-      c.headers['cookie'] = "manager-tver=#{cookie_manager_tver}"
+      c.headers['cookie'] = "manager-tver=#{manager_tver_cookie_value}"
     end
     apiheaders
   end
 
-  def cookie_manager_tver
+  def manager_tver_cookie_value
     driver_options = Selenium::WebDriver::Chrome::Options.new
     driver_options.add_argument("--user-data-dir=#{USER_DATA_DIR}")
     implicit_wait = 3
