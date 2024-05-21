@@ -1,40 +1,15 @@
 class Series
-  require_relative 'tver_cms_auth'
+  require_relative 'auth'
   require_relative '../base'
+  require_relative 'api_base'
 
-  END_POINT = '/api/series'.freeze
-
-  def exec_vod_series_api
-    series_id = BASE.args[:id]
-    if series_id
-      vod_series_single(series_id)
-    else
-      vod_series_all
-    end
+  def self.series
+    api = ApiBase.new('series')
+    api.results_of_paging_api
   end
 
-  private
-
-  def vod_series_all
-    tca = TverCmsAuth.new
-    con = tca.craete_apiheaders_for_auth
-    response = con.get(END_POINT) do |req|
-      # requestパラメータ指定したければする
-      req.params['']
-    end
-    result = JSON.pretty_generate(JSON.parse(response.body)['result'])
-    BASE.output_json(Series.name, result)
-  end
-
-  def vod_series_single(vod_series_id)
-    tca = TverCmsAuth.new
-    con = tca.craete_apiheaders_for_auth
-    response = con.get("#{END_POINT}/#{vod_series_id}") do |req|
-      # requestパラメータ指定したければする
-      req.params['']
-    end
-    puts response.body
-    result = JSON.pretty_generate(JSON.parse(response.body)['result'])
-    BASE.output_json(Series.name, result)
+  def self.series_single
+    api = ApiBase.new('series', 'sr30gynbcab')
+    api.result_of_single_api
   end
 end

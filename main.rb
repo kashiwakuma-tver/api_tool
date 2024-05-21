@@ -1,15 +1,16 @@
 require_relative 'lib/api/video_cloud'
 require_relative 'lib/api/tvercms/episode'
 require_relative 'lib/api/tvercms/series'
+require_relative 'lib/api/tvercms/season'
+require_relative 'lib/api/tvercms/vod'
+require_relative 'lib/api/tvercms/api_base'
 
-# e = Episode.new
-# e.exec_vod_episode_api
+# Episode.episode_vod
+# Episode.episode_vod_single
 
-s = Series.new
-s.exec_vod_series_api
+# Series.series
+# Series.series_single
 
-# vc = VideoCloud.new
-# print vc.exec
-
+# Season.season
 
 
