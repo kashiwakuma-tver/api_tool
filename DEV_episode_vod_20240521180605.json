@@ -1,0 +1,105 @@
+{
+  "id": "epacfu64bq7",
+  "version": 7,
+  "title": "ntvコンテンツシェアテスト",
+  "title_kana": "コンテンツシェアテスト",
+  "tv_flag": false,
+  "series_id": "srt1jrdm65j",
+  "series": {
+    "id": "srt1jrdm65j",
+    "title": "ntvコンテンツシェアテスト ntvコンテンツシェアテスト",
+    "title_kana": "コンテンツシェアテスト コンテンツシェアテスト",
+    "status": 1
+  },
+  "season_id": "ssqaio2veeo",
+  "season": {
+    "id": "ssqaio2veeo",
+    "title": "ntvコンテンツシェアテスト",
+    "override_series_title": ""
+  },
+  "broadcast_provider_id": "ntv",
+  "broadcast_provider": {
+    "id": "ntv",
+    "name": "日本テレビ",
+    "short_name": "日テレ"
+  },
+  "production_provider_id": "128",
+  "production_provider": {
+    "id": "128",
+    "name": "日本テレビ放送網",
+    "short_name": "日テレ"
+  },
+  "broadcast_date_label": "4月11日(木)放送分",
+  "start_at": 1712844540,
+  "end_at": 1719759540,
+  "open_at": 1712844540,
+  "close_at": 1719759540,
+  "thumbnail_url": "/cdn/images/content/thumbnail/episode/medium/epacfu64bq7.jpg?_cms=1716282365",
+  "status": 1,
+  "created_at": 1716166801,
+  "updated_at": 1716170217,
+  "description": "コンテンツシェアテスト",
+  "hamitv_program_id": "",
+  "duration": 300,
+  "source_content_url": "https://tver-ota.s3.ap-northeast-1.amazonaws.com/dev/mrss_test/video/big_buck_bunny_5min.mp4",
+  "copyright": "（C）tver",
+  "content_oaolflag": 1,
+  "index_no": 10,
+  "official_site_url": "",
+  "official_twitter_url": "",
+  "source_subtitle_url": "",
+  "is_subtitle": false,
+  "ribbon_id": 0,
+  "can_preview": true,
+  "preview_start_time": 0,
+  "preview_contents_duration": 30,
+  "episode_type_id": 0,
+  "require_reapproval_items": null,
+  "lock_items": null,
+  "update_items": null,
+  "custom_order_value": 10000,
+  "keywords": [
+
+  ],
+  "tags": [
+    {
+      "id": "drama",
+      "name": "ドラマ"
+    },
+    {
+      "id": "nns",
+      "name": "日本テレビ系"
+    },
+    {
+      "id": "ntv",
+      "name": "日テレ"
+    },
+    {
+      "id": "short",
+      "name": "短尺(10分以内)"
+    }
+  ],
+  "talents": [
+
+  ],
+  "video_cloud_cm_cue_point": {
+    "cue_points": null
+  },
+  "video_cloud_image_url": "",
+  "video_cloud_provider_meta_id": "",
+  "video_cloud_ref_id": "devintegratev8_cx-contentsharee",
+  "video_cloud_bc_id": "6353250717112",
+  "video_cloud_vmap_url": "",
+  "video_cloud_program_id": "",
+  "video_cloud_guid": "",
+  "video_cloud_evisid": "",
+  "video_cloud_spot_x_playlist_id": "",
+  "video_cloud_created_at": 0,
+  "video_cloud_updated_at": 0,
+  "video_cloud_dynamic_ingest_id": "35ba86eb-d160-47c4-8c01-4d8768edf3d7",
+  "video_cloud_dynamic_ingest_status": 1,
+  "video_cloud_console_url": "https://studio.brightcove.com/products/videocloud/media/videos/6353250717112",
+  "mrss_program": "ntvコンテンツシェアテスト ntvコンテンツシェアテスト",
+  "mrss_episode_code": "cx-contentsharee",
+  "mrss_program_key": "ntv-se"
+}

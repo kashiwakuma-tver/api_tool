@@ -5,12 +5,14 @@ require_relative 'lib/api/tvercms/season'
 require_relative 'lib/api/tvercms/vod'
 require_relative 'lib/api/tvercms/api_base'
 
-# Episode.episode_vod
-# Episode.episode_vod_single
+Episode.episode_vods
+Episode.episode_vod
 
-# Series.series
-# Series.series_single
+Series.serieses
+Series.series
 
-# Season.season
+Season.seasons
+
+# Vod.vod
 
 

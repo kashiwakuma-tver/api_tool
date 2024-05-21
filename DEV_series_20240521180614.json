@@ -1,0 +1,49 @@
+{
+  "id": "sr30gynbcab",
+  "version": 2,
+  "title": "バックアップCDN検証",
+  "title_kana": "",
+  "thumbnail_url": "/cdn/images/content/thumbnail/series/medium/sr30gynbcab.jpg?_cms=1716282374",
+  "broadcast_provider": {
+    "id": "tver",
+    "name": "TVer",
+    "short_name": "TVer"
+  },
+  "production_provider": {
+    "id": "900",
+    "name": "TVer",
+    "short_name": "TVer"
+  },
+  "open_at": 1716130800,
+  "close_at": 2147483647,
+  "status": 1,
+  "mrss_type": 0,
+  "created_at": 1716172398,
+  "updated_at": 1716172418,
+  "description": "バックアップCDN検証",
+  "display_title": "",
+  "official_site_url": "",
+  "official_twitter_url": "",
+  "svod1_media": "",
+  "svod1_url": "",
+  "svod2_media": "",
+  "svod2_url": "",
+  "copyright": "",
+  "broadcast_start_date": "",
+  "keywords": [
+
+  ],
+  "tags": [
+
+  ],
+  "talents": [
+
+  ],
+  "si_program_id": 0,
+  "mrss_program_key": "",
+  "favorite_count": 1,
+  "feature_episode_mode": 0,
+  "feature_episode_start_at": 0,
+  "feature_episode_end_at": 0,
+  "feature_episode_id": ""
+}
