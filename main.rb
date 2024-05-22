@@ -6,10 +6,10 @@ require_relative 'lib/api/tvercms/vod'
 require_relative 'lib/api/tvercms/api_base'
 require_relative 'lib/api/base'
 
-# Episode.episode_vods
+Episode.episode_vods
 # Episode.episode_vod
 
-Series.serieses
+# Series.serieses
 # Series.series
 
 # Season.seasons

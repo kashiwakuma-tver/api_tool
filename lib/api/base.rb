@@ -17,10 +17,12 @@ module BASE
       timestamp = Time.now.strftime('%Y%m%d%H%M%S')
       file_name = "#{args[:environment]}_#{class_name}_#{timestamp}.csv"
       CSV.open(file_name, 'w') do |csv|
+        # 先にheader作りたいから先んじてjsonからkeyだけ取ってくる
+        header = JSON.parse(jsons)[0][0].keys
+        csv << header
         json = JSON.parse(jsons)
         json.each do |j|
           j.each do |jj|
-            csv << jj.keys
             csv << jj.values
           end
         end

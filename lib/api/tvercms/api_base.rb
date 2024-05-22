@@ -36,6 +36,7 @@ class ApiBase
         req.params[k] = v
       end
     end
+    puts JSON.parse(response.body)['result'].keys
     result = JSON.pretty_generate(JSON.parse(response.body)['result'])
     BASE.output_json(@api_name, result)
   end
