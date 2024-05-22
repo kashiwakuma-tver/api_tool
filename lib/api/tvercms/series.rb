@@ -5,11 +5,12 @@ class Series
 
   def self.serieses
     api = ApiBase.new('series')
-    api.results_exec_paging_api
+    params = {}
+    api.results_exec_paging_api(params)
   end
 
   def self.series
-    api = ApiBase.new('series', 'sr30gynbcab')
+    api = ApiBase.new('series')
     api.results_exec_api
   end
 end

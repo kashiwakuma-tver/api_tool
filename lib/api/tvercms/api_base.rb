@@ -7,19 +7,21 @@ class ApiBase
     @id = id
   end
 
-  def results_exec_paging_api
+  def results_exec_paging_api(params = nil)
     con = api_auth_headers
     results = []
-    offset = 100
+    offset = 0
     loop do
+      puts "#{offset}件目からデータ取得中"
       response = con.get(end_point) do |req|
-        # requestパラメータ指定したければする
         req.params['offset'] = offset
+        params.each do |k, v|
+          req.params[k] = v
+        end
       end
       results << JSON.parse(response.body)['result']
       total = JSON.parse(response.body)['paging']['total']
       offset = JSON.parse(response.body)['paging']['offset']
-      puts "#{offset - 100}~#{offset}を取得"
       break if total <= offset
     end
     BASE.output_json("#{@api_name}_paging", JSON.pretty_generate(results))
@@ -29,8 +31,9 @@ class ApiBase
     con = api_auth_headers
     puts end_point
     response = con.get(end_point) do |req|
-      # requestパラメータ指定したければする
-      # req.params['hoge'] = 'fuga'
+      api_params.each do |k, v|
+        req.params[k] = v
+      end
     end
     result = JSON.pretty_generate(JSON.parse(response.body)['result'])
     BASE.output_json(@api_name, result)

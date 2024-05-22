@@ -7,6 +7,8 @@ class Auth
   def define_url
     environment = BASE.args[:environment]
     case environment
+    when 'LOCAL'
+      ENV['LOCAL_TVER_CMS_URL']
     when 'DEV'
       ENV['DEV_TVER_CMS_URL']
     when 'STG'
