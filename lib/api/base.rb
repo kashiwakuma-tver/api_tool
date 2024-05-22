@@ -1,4 +1,5 @@
 module BASE
+  require 'active_support/all'
   require 'base64'
   require 'csv'
   require 'faraday'

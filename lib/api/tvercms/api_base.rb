@@ -28,11 +28,11 @@ class ApiBase
     BASE.json_to_csv("#{@api_name}_paging", JSON.pretty_generate(results))
   end
 
-  def results_exec_api
+  def results_exec_api(params = nil)
     con = api_auth_headers
     puts end_point
     response = con.get(end_point) do |req|
-      api_params.each do |k, v|
+      params.each do |k, v|
         req.params[k] = v
       end
     end
@@ -44,7 +44,7 @@ class ApiBase
 
   def end_point
     end_points = YAML.load_file('endpoint.yaml')
-    return "api/#{end_points[@api_name.to_sym]}/#{@id}" unless @id.nil?
+    return "api/#{end_points[@api_name.to_sym]}/#{@id}" if @id.present?
 
     "api/#{end_points[@api_name.to_sym]}"
   end
