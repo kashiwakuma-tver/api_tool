@@ -1,5 +1,6 @@
 module BASE
   require 'base64'
+  require 'csv'
   require 'faraday'
   require 'json'
   require 'selenium-webdriver'
@@ -9,6 +10,20 @@ module BASE
     def args
       args = { environment: ARGV[0], id: ARGV[1] }
       # args unless args_check(args)
+    end
+
+    def json_to_csv(class_name, jsons)
+      timestamp = Time.now.strftime('%Y%m%d%H%M%S')
+      file_name = "#{args[:environment]}_#{class_name}_#{timestamp}.csv"
+      CSV.open(file_name, 'w') do |csv|
+        json = JSON.parse(jsons)
+        json.each do |j|
+          j.each do |jj|
+            csv << jj.keys
+            csv << jj.values
+          end
+        end
+      end
     end
 
     def output_json(class_name, result)

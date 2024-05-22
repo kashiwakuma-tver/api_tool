@@ -25,6 +25,7 @@ class ApiBase
       break if total <= offset
     end
     BASE.output_json("#{@api_name}_paging", JSON.pretty_generate(results))
+    BASE.json_to_csv("#{@api_name}_paging", JSON.pretty_generate(results))
   end
 
   def results_exec_api
