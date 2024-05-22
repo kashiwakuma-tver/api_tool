@@ -18,10 +18,9 @@ module BASE
       file_name = "#{args[:environment]}_#{class_name}_#{timestamp}.csv"
       CSV.open(file_name, 'w') do |csv|
         # 先にheader作りたいから先んじてjsonからkeyだけ取ってくる
-        header = JSON.parse(jsons)[0][0].keys
-        csv << header
-        json = JSON.parse(jsons)
-        json.each do |j|
+        jsons = JSON.parse(jsons)
+        csv << jsons[0][0].keys
+        jsons.each do |j|
           j.each do |jj|
             csv << jj.values
           end
