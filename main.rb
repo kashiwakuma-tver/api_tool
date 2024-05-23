@@ -4,18 +4,22 @@ require_relative 'lib/api/tvercms/series'
 require_relative 'lib/api/tvercms/season'
 require_relative 'lib/api/tvercms/vod'
 require_relative 'lib/api/tvercms/api_base'
-require_relative 'lib/api/tvercms/contentmaster'
+require_relative 'lib/api/contentmaster/contentmaster'
 require_relative 'lib/api/base'
 
-# Episode.episode_vods
-# Episode.episode_vod
+Episode.new.episode_vods
+Episode.new.episode_vod
+Episode.new.episode_lives
+Episode.new.episode_live
 
-# Series.serieses
-# Series.series
+Series.new.serieses
+Series.new.series
 
-# Season.seasons
+Season.new.series_seasons('sr30gynbcab')
+Season.new.series_season('sr30gynbcab')
+Season.new.season
 
-# Vod.vod
+Vod.new.vod
 
-c = ContentMaster.new
-c.results_exec_api
+# c = ContentMaster.new
+# c.results_exec_api

@@ -1,10 +1,7 @@
 class ContentMaster
-  require_relative 'api_base'
   require_relative '../base'
 
   END_POINT = { series: 'series', season: 'season', episode: 'episode/vod' }.freeze
-
-  attr_accessor :environment, :provider_id, :api_type, :time, :content_key
 
   def initialize(args = {})
     @environment = args[:environment] || 'dev'

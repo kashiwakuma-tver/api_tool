@@ -3,14 +3,20 @@ class Series
   require_relative '../base'
   require_relative 'api_base'
 
-  def self.serieses
-    api = ApiBase.new('series')
+  def initialize
+    @args = { api_type: 'series', content_key: '', environment: 'dev' }
+  end
+
+  def serieses
+    api = ApiBase.new(@args)
     params = {}
     api.results_exec_paging_api(params)
   end
 
-  def self.series
-    api = ApiBase.new('series')
-    api.results_exec_api
+  def series
+    @args[:content_key] = 'sr30gynbcab'
+    api = ApiBase.new(@args)
+    params = {}
+    api.results_exec_api(params)
   end
 end

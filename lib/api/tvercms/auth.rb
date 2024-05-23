@@ -4,16 +4,19 @@ class Auth
   GOOGLE_AUTH_XPATH = '//*[@id="root"]/div[1]/div[1]/div[2]/div/div[2]/div/div/div[1]/div/div[3]/a/img'.freeze
   USER_DATA_DIR = '/Users/kashiwakuma/selenium_chrome_profile/'.freeze
 
+  def initialize(args = {})
+    @environment = args[:environment] || 'dev'
+  end
+
   def define_url
-    environment = ARGV[0]
-    case environment
-    when 'LOCAL'
+    case @environment
+    when 'local'
       ENV['LOCAL_TVER_CMS_URL']
-    when 'DEV'
+    when 'dev'
       ENV['DEV_TVER_CMS_URL']
-    when 'STG'
+    when 'stv'
       ENV['STG_TVER_CMS_URL']
-    when 'PRD'
+    when 'prd'
       ENV['PRD_TVER_CMS_URL']
     else
       exit
@@ -22,7 +25,8 @@ class Auth
 
   def craete_apiheaders_for_auth
     puts "cookie_manager_tver: #{manager_tver_cookie_value}"
-    puts "define_url: #{define_url}"
+    url = define_url
+    puts "url: #{url}"
     apiheaders = Faraday.new(url: define_url) do |c| # rubocop:disable Style/RedundantAssignment
       c.headers['Content-Type'] = 'application/json'
       c.headers['cookie'] = "manager-tver=#{manager_tver_cookie_value}"

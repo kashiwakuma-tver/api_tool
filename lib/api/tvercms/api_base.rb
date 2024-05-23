@@ -2,12 +2,13 @@ class ApiBase
   require_relative 'auth'
   require_relative '../base'
 
-  def initialize(api_name, id = nil)
-    @api_name = api_name
-    @id = id
+  def initialize(args = {})
+    @api_type = args[:api_type]
+    @content_key = args[:content_key]
+    @environment = args[:environment] || 'dev'
   end
 
-  def results_exec_paging_api(params = nil)
+  def results_exec_paging_api(params = {})
     con = api_auth_headers
     results = []
     offset = 0
@@ -24,8 +25,8 @@ class ApiBase
       offset = JSON.parse(response.body)['paging']['offset']
       break if total <= offset
     end
-    BASE.output_json("#{@api_name}_paging", JSON.pretty_generate(results))
-    BASE.json_to_csv("#{@api_name}_paging", JSON.pretty_generate(results))
+    BASE.output_json("#{filename}.json", JSON.pretty_generate(results))
+    BASE.json_to_csv("#{filename}.csv", JSON.pretty_generate(results)) if results.length > 1
   end
 
   def results_exec_api(params = nil)
@@ -36,20 +37,24 @@ class ApiBase
       end
     end
     result = JSON.pretty_generate(JSON.parse(response.body)['result'])
-    BASE.output_json(@api_name, result)
+    BASE.output_json("#{filename}.json", result)
   end
 
   private
 
-  def end_point
-    end_points = YAML.load_file('endpoint.yaml')
-    return "api/#{end_points[@api_name.to_sym]}/#{@id}" if @id.present?
-
-    "api/#{end_points[@api_name.to_sym]}"
-  end
-
   def api_auth_headers
     tca = Auth.new
     tca.craete_apiheaders_for_auth
+  end
+
+  def end_point
+    # end_points = YAML.load_file('endpoint.yaml')
+    return "api/#{@api_type}/#{@content_key}" if @content_key.present?
+
+    "api/#{@api_type}"
+  end
+
+  def filename
+    "#{@environment}_#{end_point.gsub('api/', '').gsub('/', '_')}_#{Time.now.strftime('%Y%m%d%H%M%S')}"
   end
 end
