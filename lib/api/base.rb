@@ -1,16 +1,15 @@
 module BASE
-  require 'active_support'
+  require 'active_support/all'
   require 'base64'
   require 'csv'
-  require 'faraday'
+  require 'faraday_middleware'
   require 'json'
   require 'selenium-webdriver'
+  require 'time'
   require 'yaml'
 
   class << self
-    def json_to_csv(class_name, jsons)
-      timestamp = Time.now.strftime('%Y%m%d%H%M%S')
-      file_name = "#{args[:environment]}_#{class_name}_#{timestamp}.csv"
+    def json_to_csv(file_name, jsons)
       CSV.open(file_name, 'w') do |csv|
         # 先にheader作りたいから先んじてjsonからkeyだけ取ってくる
         jsons = JSON.parse(jsons)
@@ -23,9 +22,7 @@ module BASE
       end
     end
 
-    def output_json(class_name, result)
-      timestamp = Time.now.strftime('%Y%m%d%H%M%S')
-      file_name = "#{args[:environment]}_#{class_name}_#{timestamp}.json"
+    def output_json(file_name, result)
       File.open(file_name, 'w') do |f|
         f.write(result)
       end

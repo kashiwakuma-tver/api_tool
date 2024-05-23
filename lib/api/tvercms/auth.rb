@@ -5,7 +5,7 @@ class Auth
   USER_DATA_DIR = '/Users/kashiwakuma/selenium_chrome_profile/'.freeze
 
   def define_url
-    environment = BASE.args[:environment]
+    environment = ARGV[0]
     case environment
     when 'LOCAL'
       ENV['LOCAL_TVER_CMS_URL']

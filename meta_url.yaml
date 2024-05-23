@@ -1,0 +1,69 @@
+:dev:
+  :ntv:
+    :url: 'https://stg-feed.kronos.play.jp'
+    :token: 'So5ofWsPEh23vtB0W0cVCuSd1r3VwiPOwaMKpkKBrpgQmBdW85NaLe0inTvGDgBo'
+  :ex:
+    :url: 'https://st-douga-api.tvasahi.jp'
+    :token:
+  :tbs:
+    :url: 'https://stg.godigo-tverapp.tbs.co.jp'
+    :token: '5J0IxI6dNz3LD5NqUvGSQ2DGUSS2Ys7d2RVGQzAt'
+  :tx:
+    :url: 'https://mdas-tver-stg.api.tv-tokyo.co.jp'
+    :token: URAExN7TtkvSEsmuiLCvJNGdXxEWS5pi
+  :cx:
+    :url: 'https://yspt6e292k.execute-api.ap-northeast-1.amazonaws.com'
+    :token: 'oQuoBozFpJ6oHIkQW572043l5EF1sbFt3ZPNyyqX'
+  :mbs:
+    :url:
+    :token:
+  :ktv:
+    :url: 'https://t4aa6trqo0.execute-api.ap-northeast-1.amazonaws.com'
+    :token: 'pY4HJb79Na4nI4giBWFBVTgUwbJlCsh7SCbSUAnj'
+  :ytv:
+    :url: 'https://cu.aws-ytv.com'
+    :token: 'frSl.yciqOyhPBA9w6as6kJRR1ZWlBTM'
+  :abc:
+    :url:
+    :token:
+  :tvo:
+    :url: 'https://dev-tvocms.unixon.co.jp'
+    :token: z4rwm2i9
+  :nhk:
+    :url: 'https://stg.catchup.nhk.or.jp'
+    :token: '+gm*&7(3zAX5Q84z!#M5sJ.sTpV37.!Z'
+
+:prd:
+  :ntv:
+    :url: 'https://feed.kronos.play.jp'
+    :token: '2WLLWa4BN9riKe2HXRcCauHfPWhYMspKycgZWbRDUQV2Lp5sZ5tYVsDr2KudeMe7'
+  :ex:
+    :url:
+    :token:
+  :tbs:
+    :url:
+    :token:
+  :tx:
+    :url: 'https://mdas-tver.api.tv-tokyo.co.jp'
+    :token: 'gp0FLKvYAa1Wv0thv6bT7HaY2ltJfR4P'
+  :cx:
+    :url: 'https://5b1tx16t0a.execute-api.ap-northeast-1.amazonaws.com'
+    :token: '8StDzL66eCfaz3ugUk3w272Fexr0mwBDY1iN9gg0'
+  :mbs:
+    :url:
+    :token:
+  :ktv:
+    :url: 'https://t4aa6trqo0.execute-api.ap-northeast-1.amazonaws.com'
+    :token: 'pY4HJb79Na4nI4giBWFBVTgUwbJlCsh7SCbSUAnj'
+  :ytv:
+    :url:
+    :token:
+  :abc:
+    :url:
+    :token:
+  :tvo:
+    :url: 'https://tvo-cms.unixon.co.jp'
+    :token: 'ae340d36'
+  :nhk:
+    :url:
+    :token:

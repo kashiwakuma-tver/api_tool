@@ -15,7 +15,7 @@ class ApiBase
       puts "#{offset}件目からデータ取得中"
       response = con.get(end_point) do |req|
         req.params['offset'] = offset
-        params.each do |k, v|
+        params&.each do |k, v|
           req.params[k] = v
         end
       end
@@ -30,13 +30,11 @@ class ApiBase
 
   def results_exec_api(params = nil)
     con = api_auth_headers
-    puts end_point
     response = con.get(end_point) do |req|
-      params.each do |k, v|
+      params&.each do |k, v|
         req.params[k] = v
       end
     end
-    puts JSON.parse(response.body)['result'].keys
     result = JSON.pretty_generate(JSON.parse(response.body)['result'])
     BASE.output_json(@api_name, result)
   end
