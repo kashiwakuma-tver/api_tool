@@ -11,7 +11,7 @@ class Season
     @args[:api_type] = 'series/' + "#{series_key}/" + 'season'
     api = ApiBase.new(@args)
     params = {}
-    api.results_exec_api(params)
+    api.exec_api(params)
   end
 
   def series_season(series_key)
@@ -19,13 +19,13 @@ class Season
     @args[:content_key] = 'ssyzt9vf3k7'
     api = ApiBase.new(@args)
     params = {}
-    api.results_exec_api(params)
+    api.exec_api(params)
   end
 
   def season
     @args[:content_key] = 'ssyzt9vf3k7'
     api = ApiBase.new(@args)
     params = {}
-    api.results_exec_api(params)
+    api.exec_api(params)
   end
 end

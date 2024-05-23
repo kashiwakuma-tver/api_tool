@@ -10,21 +10,21 @@ class Episode
   def episode_vods
     api = ApiBase.new(@args)
     params = {}
-    api.results_exec_paging_api(params)
+    api.exec_paging_api(params)
   end
 
   def episode_vod
     @args[:content_key] = 'epb3q13akfn'
     api = ApiBase.new(@args)
     params = {}
-    api.results_exec_api(params)
+    api.exec_api(params)
   end
 
   def episode_lives
     @args[:api_type] = 'episode/live'
     api = ApiBase.new(@args)
     params = {}
-    api.results_exec_paging_api(params)
+    api.exec_paging_api(params)
   end
 
   def episode_live
@@ -32,6 +32,6 @@ class Episode
     @args[:content_key] = 'lehno0du9th'
     api = ApiBase.new(@args)
     params = {}
-    api.results_exec_api(params)
+    api.exec_api(params)
   end
 end

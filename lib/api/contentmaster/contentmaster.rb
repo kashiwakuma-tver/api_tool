@@ -11,7 +11,7 @@ class ContentMaster
     @content_key = args[:content_key] || nil
   end
 
-  def results_exec_api
+  def exec_api
     url, token = url_and_token(@environment, @provider_id)
     connection = Faraday.new(url:) do |con|
       con.use FaradayMiddleware::FollowRedirects

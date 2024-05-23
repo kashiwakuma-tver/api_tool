@@ -10,13 +10,13 @@ class Series
   def serieses
     api = ApiBase.new(@args)
     params = {}
-    api.results_exec_paging_api(params)
+    api.exec_paging_api(params)
   end
 
   def series
     @args[:content_key] = 'sr30gynbcab'
     api = ApiBase.new(@args)
     params = {}
-    api.results_exec_api(params)
+    api.exec_api(params)
   end
 end

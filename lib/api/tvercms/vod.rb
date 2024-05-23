@@ -11,6 +11,6 @@ class Vod
 
   def vod
     params = {}
-    ApiBase.new(@args).results_exec_api(params)
+    ApiBase.new(@args).exec_api(params)
   end
 end

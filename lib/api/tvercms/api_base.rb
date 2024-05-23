@@ -8,10 +8,10 @@ class ApiBase
     @environment = args[:environment] || 'dev'
   end
 
-  def results_exec_paging_api(params = {})
+  def exec_paging_api(params = {})
     con = api_auth_headers
     results = []
-    offset = 0
+    offset = 20000
     loop do
       puts "#{offset}件目からデータ取得中"
       response = con.get(end_point) do |req|
@@ -29,7 +29,7 @@ class ApiBase
     BASE.json_to_csv("#{filename}.csv", JSON.pretty_generate(results)) if results.length > 1
   end
 
-  def results_exec_api(params = nil)
+  def exec_api(params = nil)
     con = api_auth_headers
     response = con.get(end_point) do |req|
       params&.each do |k, v|

@@ -22,4 +22,4 @@ Season.new.season
 Vod.new.vod
 
 # c = ContentMaster.new
-# c.results_exec_api
+# c.exec_api
