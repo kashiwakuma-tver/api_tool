@@ -8,18 +8,18 @@ require_relative 'lib/api/contentmaster/contentmaster'
 require_relative 'lib/api/base'
 
 Episode.new.episode_vods
-Episode.new.episode_vod
-Episode.new.episode_lives
-Episode.new.episode_live
+# Episode.new.episode_vod
+# Episode.new.episode_lives
+# Episode.new.episode_live
 
-Series.new.serieses
-Series.new.series
+# Series.new.serieses
+# Series.new.series
 
-Season.new.series_seasons('sr30gynbcab')
-Season.new.series_season('sr30gynbcab')
-Season.new.season
+# Season.new.series_seasons('sr30gynbcab')
+# Season.new.series_season('sr30gynbcab')
+# Season.new.season
 
-Vod.new.vod
+# Vod.new.vod
 
 # c = ContentMaster.new
 # c.exec_api

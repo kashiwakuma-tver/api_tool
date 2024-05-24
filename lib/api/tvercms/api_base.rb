@@ -11,7 +11,7 @@ class ApiBase
   def exec_paging_api(params = {})
     con = api_auth_headers
     results = []
-    offset = 20000
+    offset = 0
     loop do
       puts "#{offset}件目からデータ取得中"
       response = con.get(end_point) do |req|
@@ -25,8 +25,9 @@ class ApiBase
       offset = JSON.parse(response.body)['paging']['offset']
       break if total <= offset
     end
-    BASE.output_json("#{filename}.json", JSON.pretty_generate(results))
-    BASE.json_to_csv("#{filename}.csv", JSON.pretty_generate(results)) if results.length > 1
+    results_json = JSON.pretty_generate(results)
+    BASE.output_json("#{filename}.json", results_json)
+    BASE.json_to_csv("#{filename}.csv", results_json) if results_json.empty?
   end
 
   def exec_api(params = nil)

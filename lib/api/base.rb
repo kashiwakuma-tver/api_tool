@@ -11,13 +11,11 @@ module BASE
   class << self
     def json_to_csv(file_name, jsons)
       CSV.open(file_name, 'w') do |csv|
-        # 先にheader作りたいから先んじてjsonからkeyだけ取ってくる
         jsons = JSON.parse(jsons)
+        # 先にheader作りたいから先んじてjsonからkeyだけ取ってくる
         csv << jsons[0][0].keys
-        jsons.each do |j|
-          j.each do |jj|
-            csv << jj.values
-          end
+        jsons.each_with_index do |j, i|
+          csv << j[i].values
         end
       end
     end
