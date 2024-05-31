@@ -23,7 +23,7 @@ class ContentMaster
       req.params['target'] = 1713315300
     end
     result = JSON.pretty_generate(JSON.parse(response.body))
-    BASE.output_json("#{@environment}_#{@provider_id}_#{@api_type}_#{Time.now.strftime('%Y%m%d%H%M%S')}.json", result)
+    BASE.output_json("#{filename}.json", result)
   end
 
   private
@@ -40,5 +40,9 @@ class ContentMaster
       yaml[environment.to_sym][broadcast_id.to_sym][:url],
       yaml[environment.to_sym][broadcast_id.to_sym][:token]
     ]
+  end
+
+  def filename
+    "#{@environment}_#{end_point.gsub('api/', '').gsub('/', '_')}_#{@provider_id}_#{Time.now.strftime('%Y%m%d%H%M%S')}"
   end
 end

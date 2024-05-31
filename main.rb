@@ -7,7 +7,7 @@ require_relative 'lib/api/tvercms/api_base'
 require_relative 'lib/api/contentmaster/contentmaster'
 require_relative 'lib/api/base'
 
-Episode.new.episode_vods
+# Episode.new.episode_vods
 # Episode.new.episode_vod
 # Episode.new.episode_lives
 # Episode.new.episode_live
@@ -21,5 +21,4 @@ Episode.new.episode_vods
 
 # Vod.new.vod
 
-# c = ContentMaster.new
-# c.exec_api
+ContentMaster.new.exec_api
