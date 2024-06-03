@@ -3,22 +3,20 @@ require_relative 'lib/api/tvercms/episode'
 require_relative 'lib/api/tvercms/series'
 require_relative 'lib/api/tvercms/season'
 require_relative 'lib/api/tvercms/vod'
-require_relative 'lib/api/tvercms/api_base'
 require_relative 'lib/api/contentmaster/contentmaster'
-require_relative 'lib/api/base'
 
-# Episode.new.episode_vods
-# Episode.new.episode_vod
-# Episode.new.episode_lives
-# Episode.new.episode_live
+# Episode.new({ api_type: 'episode/vod', content_key: nil, environment: 'dev' }).episode_vods
+# Episode.new({ api_type: 'episode/vod', content_key: 'epljgx7ad7t', environment: 'dev' }).episode_vod
+# Episode.new({ api_type: 'episode/live', content_key: nil, environment: 'dev' }).episode_lives
+# Episode.new({ api_type: 'episode/live', content_key: 'leyd4bt4dsv', environment: 'dev' }).episode_live
 
-# Series.new.serieses
-# Series.new.series
+# Series.new({ api_type: 'series', content_key: nil, environment: 'dev' }).serieses
+# Series.new({ api_type: 'series', content_key: 'srm04h7ptuh', environment: 'dev' }).series
 
-# Season.new.series_seasons('sr30gynbcab')
-# Season.new.series_season('sr30gynbcab')
+# Season.new({ api_type: 'series/sr30gynbcab/season', content_key: nil, environment: 'dev' }).series_seasons
+# Season.new({ api_type: 'series/sr30gynbcab/season', content_key: 'ssyzt9vf3k7', environment: 'dev' }).series_season
 # Season.new.season
 
 # Vod.new.vod
 
-ContentMaster.new({ environment: 'dev', broadcast_provider_id: 'cx', api_type: 'series', time: '1713315300', content_key: nil }).exec_api
+ContentMaster.new({ environment: 'dev', broadcast_provider_id: 'cx', api_type: 'series', content_key: nil }, { target: '1713315300' }).exec_api

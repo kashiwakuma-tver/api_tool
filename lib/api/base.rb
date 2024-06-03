@@ -14,10 +14,13 @@ module BASE
         jsons = JSON.parse(jsons)
         # 先にheader作りたいから先んじてjsonからkeyだけ取ってくる
         csv << jsons[0][0].keys
-        jsons.each_with_index do |j, i|
-          csv << j[i].values
+        jsons.each do |json|
+          json.each do |j|
+            csv << j.values
+          end
         end
       end
+      puts "#{file_name}を出力しました"
     end
 
     def output_json(file_name, result)

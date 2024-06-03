@@ -3,35 +3,24 @@ class Episode
   require_relative '../base'
   require_relative 'api_base'
 
-  def initialize
-    @args = { api_type: 'episode/vod', content_key: '', environment: 'dev' }
+  def initialize(options = {}, params = {})
+    @options = options
+    @params = params
   end
 
   def episode_vods
-    api = ApiBase.new(@args)
-    params = {}
-    api.exec_paging_api(params)
+    ApiBase.new(@options, @params).exec_paging_api
   end
 
   def episode_vod
-    @args[:content_key] = 'epb3q13akfn'
-    api = ApiBase.new(@args)
-    params = {}
-    api.exec_api(params)
+    ApiBase.new(@options, @params).exec_api
   end
 
   def episode_lives
-    @args[:api_type] = 'episode/live'
-    api = ApiBase.new(@args)
-    params = {}
-    api.exec_paging_api(params)
+    ApiBase.new(@options, @params).exec_paging_api
   end
 
   def episode_live
-    @args[:api_type] = 'episode/live'
-    @args[:content_key] = 'lehno0du9th'
-    api = ApiBase.new(@args)
-    params = {}
-    api.exec_api(params)
+    ApiBase.new(@options, @params).exec_api
   end
 end

@@ -3,29 +3,20 @@ class Season
   require_relative '../base'
   require_relative 'api_base'
 
-  def initialize
-    @args = { api_type: 'season', content_key: '', environment: 'dev' }
+  def initialize(options = {}, params = {})
+    @options = options
+    @params = params
   end
 
-  def series_seasons(series_key)
-    @args[:api_type] = 'series/' + "#{series_key}/" + 'season'
-    api = ApiBase.new(@args)
-    params = {}
-    api.exec_api(params)
+  def series_seasons
+    ApiBase.new(@options, @params).exec_api
   end
 
-  def series_season(series_key)
-    @args[:api_type] = 'series/' + "#{series_key}/" + 'season'
-    @args[:content_key] = 'ssyzt9vf3k7'
-    api = ApiBase.new(@args)
-    params = {}
-    api.exec_api(params)
+  def series_season
+    ApiBase.new(@options, @params).exec_api
   end
 
   def season
-    @args[:content_key] = 'ssyzt9vf3k7'
-    api = ApiBase.new(@args)
-    params = {}
-    api.exec_api(params)
+    ApiBase.new(@options, @params).exec_api
   end
 end
