@@ -3,16 +3,16 @@ class ContentMaster
 
   END_POINT = { series: 'series', season: 'season', episode: 'episode/vod' }.freeze
 
-  def initialize(args = {})
-    @environment = args[:environment] || 'dev'
-    @provider_id = args[:provider] || 'cx'
-    @api_type = args[:api_type] || 'series'
-    @time = args[:time] || Time.now
-    @content_key = args[:content_key] || nil
+  def initialize(option = {})
+    @environment = option[:environment]
+    @broadcast_provider_id = option[:broadcast_provider_id]
+    @api_type = option[:api_type]
+    @time = option[:time]
+    @content_key = option[:content_key]
   end
 
   def exec_api
-    url, token = url_and_token(@environment, @provider_id)
+    url, token = url_and_token(@environment, @broadcast_provider_id)
     connection = Faraday.new(url:) do |con|
       con.use FaradayMiddleware::FollowRedirects
       con.adapter :net_http
@@ -20,7 +20,7 @@ class ContentMaster
 
     response = connection.get(end_point) do |req|
       req.headers['X-TVER-CONTENTS-MASTER-SECRET'] = token
-      req.params['target'] = 1713315300
+      req.params['target'] = @time
     end
     result = JSON.pretty_generate(JSON.parse(response.body))
     BASE.output_json("#{filename}.json", result)
@@ -34,15 +34,15 @@ class ContentMaster
     "api/v1/#{END_POINT[@api_type.to_sym]}"
   end
 
-  def url_and_token(environment, broadcast_id)
+  def url_and_token(environment, broadcast_provider_id)
     yaml = YAML.load_file('meta_url.yaml')
     [
-      yaml[environment.to_sym][broadcast_id.to_sym][:url],
-      yaml[environment.to_sym][broadcast_id.to_sym][:token]
+      yaml[environment.to_sym][broadcast_provider_id.to_sym][:url],
+      yaml[environment.to_sym][broadcast_provider_id.to_sym][:token]
     ]
   end
 
   def filename
-    "#{@environment}_#{end_point.gsub('api/', '').gsub('/', '_')}_#{@provider_id}_#{Time.now.strftime('%Y%m%d%H%M%S')}"
+    "#{@environment}_#{end_point.gsub('api/', '').gsub('/', '_')}_#{@broadcast_provider_id}_#{Time.now.strftime('%Y%m%d%H%M%S')}"
   end
 end

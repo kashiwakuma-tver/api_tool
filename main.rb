@@ -21,4 +21,4 @@ require_relative 'lib/api/base'
 
 # Vod.new.vod
 
-ContentMaster.new.exec_api
+ContentMaster.new({ environment: 'dev', broadcast_provider_id: 'cx', api_type: 'series', time: '1713315300', content_key: nil }).exec_api
