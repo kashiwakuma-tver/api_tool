@@ -5,13 +5,15 @@ require_relative 'lib/api/tvercms/season'
 require_relative 'lib/api/tvercms/vod'
 require_relative 'lib/api/contentmaster/contentmaster'
 
-# パラメータについて
-## options
-### api_type：実行するAPIを指定する
-### content_key：取得系のみ。一意のIDを指定する
-### environment：実行環境。dev、stg、prodのみ
-### broadcast_provider_id；ContentMasterのみ。取得したい局のIDを指定する
-## params
+# インスタンス生成時に指定する引数について
+## optionsとparamsの2種類ある。それぞれハッシュ形式で指定する
+### options
+#### api_type：実行するAPIを指定する
+#### content_key：取得系のみ。一意のIDを指定する
+#### environment：実行環境。dev、stg、prodのみ
+#### broadcast_provider_id；ContentMasterのみ。取得したい局のIDを指定する
+#### need_csv：一覧系のAPIでcsv出力したいときtrueを指定する
+### params
 ### クエリパラメータを指定する。CMSリファレンスに沿って指定する
 
 #### episode系 ####
