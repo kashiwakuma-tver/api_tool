@@ -2,18 +2,18 @@ class ApiBase
   require_relative 'auth'
   require_relative '../base'
 
-  def initialize(option = {}, params = {})
-    @api_type = option[:api_type]
-    @content_key = option[:content_key]
-    @environment = option[:environment]
-    @need_csv = option[:need_csv]
+  def initialize(options = {}, params = {})
+    @api_type = options[:api_type]
+    @content_key = options[:content_key]
+    @environment = options[:environment]
+    @need_csv = options[:need_csv]
     @params = params
   end
 
   def exec_paging_api
     con = api_auth_headers
     results = []
-    offset = 9000
+    offset = 0
     loop do
       puts "#{offset}件目からデータ取得中"
       response = con.get(end_point) do |req|
