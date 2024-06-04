@@ -16,13 +16,13 @@ require_relative 'lib/api/contentmaster/contentmaster'
 
 #### episode系 ####
 # VODエピソード一覧
-# Episode.new({ api_type: 'episode/vod', content_key: nil, environment: 'dev' }).episode_vods
+# Episode.new({ api_type: 'episode/vod', content_key: nil, environment: 'dev', need_csv: true }).episode_vods
 
 # VODエピソード取得
 # Episode.new({ api_type: 'episode/vod', content_key: 'epljgx7ad7t', environment: 'dev' }).episode_vod
 
 # LIVEエピソード一覧
-# Episode.new({ api_type: 'episode/live', content_key: nil, environment: 'dev' }).episode_lives
+# Episode.new({ api_type: 'episode/live', content_key: nil, environment: 'dev', need_csv: true}).episode_lives
 
 # LIVEエピソード取得
 # Episode.new({ api_type: 'episode/live', content_key: 'leyd4bt4dsv', environment: 'dev' }).episode_live

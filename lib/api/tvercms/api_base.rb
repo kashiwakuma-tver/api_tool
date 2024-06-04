@@ -6,13 +6,14 @@ class ApiBase
     @api_type = option[:api_type]
     @content_key = option[:content_key]
     @environment = option[:environment]
+    @need_csv = option[:need_csv]
     @params = params
   end
 
   def exec_paging_api
     con = api_auth_headers
     results = []
-    offset = 0
+    offset = 9000
     loop do
       puts "#{offset}件目からデータ取得中"
       response = con.get(end_point) do |req|
@@ -21,7 +22,6 @@ class ApiBase
           req.params[k] = v
         end
       end
-      puts end_point
       results << JSON.parse(response.body)['result']
       total = JSON.parse(response.body)['paging']['total']
       offset = JSON.parse(response.body)['paging']['offset']
@@ -29,7 +29,7 @@ class ApiBase
     end
     results_json = JSON.pretty_generate(results)
     BASE.output_json("#{filename}.json", results_json)
-    BASE.json_to_csv("#{filename}.csv", results_json)
+    BASE.json_to_csv("#{filename}.csv", results_json) if @need_csv
   end
 
   def exec_api
