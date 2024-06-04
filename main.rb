@@ -34,10 +34,9 @@ require_relative 'lib/api/contentmaster/contentmaster'
 #### season系 ####
 # Season.new({ api_type: 'series/sr30gynbcab/season', content_key: nil, environment: 'dev' }).series_seasons
 # Season.new({ api_type: 'series/sr30gynbcab/season', content_key: 'ssyzt9vf3k7', environment: 'dev' }).series_season
-# Season.new.season
 
 #### VOD管理系 ####
-# Vod.new.vod
+# Vod.new({ api_type: 'vod', content_key: nil, environment: 'dev' }).vod
 
 #### ContentMaster ####
 # ContentMaster.new({ environment: 'dev', broadcast_provider_id: 'cx', api_type: 'series', content_key: nil }, { target: '1713315300' }).exec_api

@@ -1,6 +1,4 @@
 class Series
-  require_relative 'auth'
-  require_relative '../base'
   require_relative 'api_base'
 
   def initialize(options = {}, params = {})

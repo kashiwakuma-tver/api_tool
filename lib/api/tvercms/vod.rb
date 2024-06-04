@@ -1,16 +1,14 @@
 class Vod
-  require_relative 'auth'
-  require_relative '../base'
   require_relative 'api_base'
 
   KEY_BROADCAST_PROVIDER_IDS = %w[ntv abc ex ktv tver cx mbs tvo ytv tbs].freeze
 
-  def initialize
-    @args = { api_type: 'vod', content_key: '', environment: 'dev' }
+  def initialize(options = {}, params = {})
+    @options = options
+    @params = params
   end
 
   def vod
-    params = {}
-    ApiBase.new(@args).exec_api(params)
+    ApiBase.new(@options, @params).exec_api
   end
 end
