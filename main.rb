@@ -11,8 +11,7 @@ KEY_BROADCAST_PROVIDER_IDS = %w[ntv abc ex ktv tver cx mbs tvo ytv tbs].freeze
 url_hash = { local: ENV['LOCAL_TVER_CMS_URL'],
              dev: ENV['DEV_TVER_CMS_URL'],
              stg: ENV['STG_TVER_CMS_URL'],
-             prd: ENV['PRD_TVER_CMS_URL']
-            }
+             prd: ENV['PRD_TVER_CMS_URL'] }
 
 # インスタンス生成時に指定する引数について
 ## optionsとparamsの2種類ある。それぞれハッシュ形式で指定する
@@ -33,7 +32,7 @@ cookie = Auth.new(url_hash[:dev]).manager_tver_cookie_value
 # Episode.new({ api_type: 'episode/vod', cookie:, url: url_hash[:dev] }, { offset: 9000 }).episode_vods
 
 # VODエピソード取得
-# Episode.new({ api_type: 'episode/vod', cookie:,  id: 'epljgx7ad7t', url: url_hash[:dev] }).episode_vod
+Episode.new({ api_type: 'episode/vod', cookie:, id: 'epljgx7ad7t', url: url_hash[:dev] }).episode_vod
 
 # LIVEエピソード一覧
 # Episode.new({ api_type: 'episode/live', cookie:, url: url_hash[:dev] }, { offset: 800 }).episode_lives
