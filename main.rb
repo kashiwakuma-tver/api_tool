@@ -40,7 +40,11 @@ KEY_BROADCAST_PROVIDER_IDS = %w[ntv abc ex ktv tver cx mbs tvo ytv tbs].freeze
 # Season.new({ api_type: 'series/sr30gynbcab/season', id: 'ssyzt9vf3k7', environment: 'dev' }).series_season
 
 #### VOD管理系 ####
-# Vod.new({ api_type: 'vod', id: 'ntv', environment: 'dev' }).vod
+# Vod.new({ api_type: 'vod', id: nil, environment: 'dev' }).vod
+# キー局+TVerの情報が一括で欲しい場合
+# KEY_BROADCAST_PROVIDER_IDS.each do |bpid|
+#   puts Vod.new({ api_type: 'vod', id: bpid, environment: 'dev' }).vod
+# end
 
 #### ファイル出力したい場合は以下も実行
 # BASE.output_json('file_name.json', json)
