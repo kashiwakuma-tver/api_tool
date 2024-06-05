@@ -4,7 +4,7 @@ class ApiBase
 
   def initialize(options = {}, params = {})
     @api_type = options[:api_type]
-    @content_key = options[:content_key]
+    @id = options[:id]
     @environment = options[:environment]
     @need_csv = options[:need_csv]
     @params = params
@@ -51,7 +51,7 @@ class ApiBase
   end
 
   def end_point
-    return "api/#{@api_type}/#{@content_key}" if @content_key.present?
+    return "api/#{@api_type}/#{@id}" if @id.present?
 
     "api/#{@api_type}"
   end
