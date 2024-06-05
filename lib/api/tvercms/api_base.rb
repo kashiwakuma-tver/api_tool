@@ -4,19 +4,21 @@ class ApiBase
 
   def initialize(options = {}, params = {})
     @api_type = options[:api_type]
-    @id = options[:id]
-    @environment = options[:environment]
-    @need_csv = options[:need_csv]
+    @cookie = options[:cookie]
+    @id = options[:id] || nil
+    @offset = options[:offset] || 0
+    @url = options[:url]
     @params = params
   end
 
   def exec_paging_api
-    con = api_auth_headers
     results = []
-    offset = 9000
+    offset = @offset
     loop do
       puts "#{offset}件目からデータ取得中"
-      response = con.get(end_point) do |req|
+      response = Faraday.new(url: @url).get(end_point) do |req|
+        req.headers['Content-Type'] = 'application/json'
+        req.headers['cookie'] = "manager-tver=#{@cookie}"
         req.params['offset'] = offset
         @params&.each do |k, v|
           req.params[k] = v
@@ -31,8 +33,9 @@ class ApiBase
   end
 
   def exec_api
-    con = api_auth_headers
-    response = con.get(end_point) do |req|
+    response = Faraday.new(url: @url).get(end_point) do |req|
+      req.headers['Content-Type'] = 'application/json'
+      req.headers['cookie'] = "manager-tver=#{@cookie}"
       @params&.each do |k, v|
         req.params[k] = v
       end
@@ -41,11 +44,6 @@ class ApiBase
   end
 
   private
-
-  def api_auth_headers
-    tca = Auth.new(@environment)
-    tca.craete_apiheaders_for_auth
-  end
 
   def end_point
     return "api/#{@api_type}/#{@id}" if @id.present?
