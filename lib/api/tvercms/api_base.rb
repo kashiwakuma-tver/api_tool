@@ -39,8 +39,7 @@ class ApiBase
         req.params[k] = v
       end
     end
-    result = JSON.pretty_generate(JSON.parse(response.body)['result'])
-    BASE.output_json("#{filename}.json", result)
+    JSON.parse(response.body)
   end
 
   private

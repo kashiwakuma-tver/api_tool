@@ -5,6 +5,8 @@ require_relative 'lib/api/tvercms/season'
 require_relative 'lib/api/tvercms/vod'
 require_relative 'lib/api/contentmaster/contentmaster'
 
+KEY_BROADCAST_PROVIDER_IDS = %w[ntv abc ex ktv tver cx mbs tvo ytv tbs].freeze
+
 # インスタンス生成時に指定する引数について
 ## optionsとparamsの2種類ある。それぞれハッシュ形式で指定する
 ### options
@@ -38,7 +40,7 @@ require_relative 'lib/api/contentmaster/contentmaster'
 # Season.new({ api_type: 'series/sr30gynbcab/season', id: 'ssyzt9vf3k7', environment: 'dev' }).series_season
 
 #### VOD管理系 ####
-# Vod.new({ api_type: 'vod', id: nil, environment: 'dev' }).vod
+# Vod.new({ api_type: 'vod', id: 'ntv', environment: 'dev' }).vod
 
 #### ContentMaster ####
 # ContentMaster.new({ environment: 'dev', broadcast_provider_id: 'cx', api_type: 'series', id: nil }, { target: '1713315300' }).exec_api
