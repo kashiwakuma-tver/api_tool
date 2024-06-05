@@ -42,5 +42,9 @@ KEY_BROADCAST_PROVIDER_IDS = %w[ntv abc ex ktv tver cx mbs tvo ytv tbs].freeze
 #### VOD管理系 ####
 # Vod.new({ api_type: 'vod', id: 'ntv', environment: 'dev' }).vod
 
+#### ファイル出力したい場合は以下も実行
+# BASE.output_json('file_name.json', json)
+# BASE.json_to_csv('file_name.csv', json)
+
 #### ContentMaster ####
 # ContentMaster.new({ environment: 'dev', broadcast_provider_id: 'cx', api_type: 'series', id: nil }, { target: '1713315300' }).exec_api
