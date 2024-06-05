@@ -13,37 +13,33 @@ class ApiBase
 
   def exec_paging_api
     results = []
-    offset = @offset
     loop do
-      puts "#{offset}件目からデータ取得中"
-      response = Faraday.new(url: @url).get(end_point) do |req|
-        req.headers['Content-Type'] = 'application/json'
-        req.headers['cookie'] = "manager-tver=#{@cookie}"
-        req.params['offset'] = offset
-        @params&.each do |k, v|
-          req.params[k] = v
-        end
-      end
+      puts "#{@params[:offset]}件目からデータ取得中"
+      response = create_api_header
       results << JSON.parse(response.body)['result']
       total = JSON.parse(response.body)['paging']['total']
-      offset = JSON.parse(response.body)['paging']['offset']
-      break if total <= offset
+      @params[:offset] = JSON.parse(response.body)['paging']['offset']
+      break if total <= @params[:offset]
     end
     JSON.pretty_generate(results)
   end
 
   def exec_api
-    response = Faraday.new(url: @url).get(end_point) do |req|
+    response = create_api_header
+    JSON.parse(response.body)
+  end
+
+  private
+
+  def create_api_header
+    Faraday.new(url: @url).get(end_point) do |req|
       req.headers['Content-Type'] = 'application/json'
       req.headers['cookie'] = "manager-tver=#{@cookie}"
       @params&.each do |k, v|
         req.params[k] = v
       end
     end
-    JSON.parse(response.body)
   end
-
-  private
 
   def end_point
     return "api/#{@api_type}/#{@id}" if @id.present?
