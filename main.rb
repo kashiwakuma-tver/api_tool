@@ -70,4 +70,9 @@ url = { local: ENV['LOCAL_TVER_CMS_URL'],
 # puts ContentMaster.new({ url:, token:, api_type: 'series', id: nil }, { target: '1713315300' }).exec_api
 
 #### VideoCloud ####
-puts CreateToken.new.exec
+yaml = YAML.load_file('videocloud_accounts.yaml')
+account_id = yaml[:tver]
+puts account_id
+token = CreateToken.new.exec
+
+puts GetVideo.new({ api_type: 'videos', token:, account_id:, url: 'https://cms.api.brightcove.com/v1/accounts' }, { offset: 0 }).get_videos
