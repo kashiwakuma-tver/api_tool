@@ -1,5 +1,5 @@
 class VideoCloud
-  require 'faraday_middleware'
+  require_relative '../../../library'
 
   def exec
     accress_token = create_access_token # rubocop:disable Lint/UselessAssignment

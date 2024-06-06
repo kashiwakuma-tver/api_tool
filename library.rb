@@ -7,4 +7,5 @@ module Library
   require 'selenium-webdriver'
   require 'time'
   require 'yaml'
+  require 'selenium-webdriver'
 end

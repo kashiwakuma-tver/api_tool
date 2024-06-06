@@ -1,7 +1,4 @@
 class Auth
-  require 'active_support/all'
-  require 'selenium-webdriver'
-
   GOOGLE_AUTH_XPATH = '//*[@id="root"]/div[1]/div[1]/div[2]/div/div[2]/div/div/div[1]/div/div[3]/a/img'.freeze
   USER_DATA_DIR = '/Users/kashiwakuma/selenium_chrome_profile/'.freeze
 

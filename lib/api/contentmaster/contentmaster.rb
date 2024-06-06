@@ -1,6 +1,4 @@
 class ContentMaster
-  require 'faraday_middleware'
-
   def initialize(options = {}, params = {})
     @url = options[:url]
     @token = options[:token]

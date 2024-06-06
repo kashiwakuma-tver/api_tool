@@ -1,4 +1,6 @@
 class CreateFiles
+  require_relative 'library'
+
   def self.json_to_csv(file_name, jsons)
     CSV.open(file_name, 'w') do |csv|
       jsons = JSON.parse(jsons)

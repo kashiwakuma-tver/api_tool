@@ -1,5 +1,6 @@
 class ApiBase
   require_relative 'auth'
+  require_relative '../../../library'
 
   def initialize(options = {}, params = {})
     @api_type = options[:api_type]
@@ -44,9 +45,4 @@ class ApiBase
 
     "api/#{@api_type}"
   end
-
-  # 一旦コメントアウトします
-  # def filename
-  #   "#{@environment}_#{end_point.gsub('api/', '').gsub('/', '_')}_#{Time.now.strftime('%Y%m%d%H%M%S')}"
-  # end
 end
