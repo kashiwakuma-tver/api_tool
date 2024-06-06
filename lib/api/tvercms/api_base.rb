@@ -15,23 +15,23 @@ class ApiBase
     results = []
     loop do
       puts "#{@params[:offset]}件目からデータ取得中"
-      response = create_api_header
+      response = api_get
       results << JSON.parse(response.body)['result']
       total = JSON.parse(response.body)['paging']['total']
-      @params[:offset] = JSON.parse(response.body)['paging']['offset']
-      break if total <= @params[:offset]
+      @offset = JSON.parse(response.body)['paging']['offset']
+      break if total <= @offset
     end
     JSON.pretty_generate(results)
   end
 
   def exec_api
-    response = create_api_header
+    response = api_get
     JSON.parse(response.body)
   end
 
   private
 
-  def create_api_header
+  def api_get
     Faraday.new(url: @url).get(end_point) do |req|
       req.headers['Content-Type'] = 'application/json'
       req.headers['cookie'] = "manager-tver=#{@cookie}"

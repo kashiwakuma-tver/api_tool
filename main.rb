@@ -32,7 +32,7 @@ cookie = Auth.new(url_hash[:dev]).manager_tver_cookie_value
 # Episode.new({ api_type: 'episode/vod', cookie:, url: url_hash[:dev] }, { offset: 9000 }).episode_vods
 
 # VODエピソード取得
-Episode.new({ api_type: 'episode/vod', cookie:, id: 'epljgx7ad7t', url: url_hash[:dev] }).episode_vod
+puts Episode.new({ api_type: 'episode/vod', cookie:, id: 'epljgx7ad7t', url: url_hash[:dev] }).episode_vod
 
 # LIVEエピソード一覧
 # Episode.new({ api_type: 'episode/live', cookie:, url: url_hash[:dev] }, { offset: 800 }).episode_lives
