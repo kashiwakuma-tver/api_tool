@@ -1,6 +1,5 @@
 class ApiBase
   require_relative 'auth'
-  require_relative '../base'
 
   def initialize(options = {}, params = {})
     @api_type = options[:api_type]

@@ -1,50 +1,39 @@
 class ContentMaster
-  require_relative '../base'
+  require 'faraday_middleware'
 
-  END_POINT = { series: 'series', season: 'season', episode: 'episode/vod' }.freeze
-
-  def initialize(option = {}, params = {})
-    @environment = option[:environment]
-    @broadcast_provider_id = option[:broadcast_provider_id]
-    @api_type = option[:api_type]
-    @content_key = option[:content_key]
+  def initialize(options = {}, params = {})
+    @url = options[:url]
+    @token = options[:token]
+    @api_type = options[:api_type]
+    @id = options[:id]
     @params = params
   end
 
   def exec_api
-    url, token = url_and_token
-    connection = Faraday.new(url:) do |con|
-      con.use FaradayMiddleware::FollowRedirects
-      con.adapter :net_http
+    connection = Faraday.new(url: @url) do |con|
+      con.use(FaradayMiddleware::FollowRedirects)
+      con.adapter(:net_http)
     end
 
     response = connection.get(end_point) do |req|
-      req.headers['X-TVER-CONTENTS-MASTER-SECRET'] = token
+      req.headers['X-TVER-CONTENTS-MASTER-SECRET'] = @token
       @params&.each do |k, v|
         req.params[k] = v
       end
     end
-    result = JSON.pretty_generate(JSON.parse(response.body))
-    BASE.output_json("#{filename}.json", result)
+    JSON.parse(response.body)
   end
 
   private
 
   def end_point
-    return "api/v1/#{END_POINT[@api_type.to_sym]}/#{@content_key}" if @content_key.present?
+    return "/api/v1/#{@api_type}/#{@id}" if @id.present?
 
-    "api/v1/#{END_POINT[@api_type.to_sym]}"
+    "/api/v1/#{@api_type}"
   end
 
-  def url_and_token
-    yaml = YAML.load_file('meta_url.yaml')
-    [
-      yaml[@environment.to_sym][@broadcast_provider_id.to_sym][:url],
-      yaml[@environment.to_sym][@broadcast_provider_id.to_sym][:token]
-    ]
-  end
-
-  def filename
-    "#{@environment}_#{end_point.gsub('api/', '').gsub('/', '_')}_#{@broadcast_provider_id}_#{Time.now.strftime('%Y%m%d%H%M%S')}"
-  end
+  # 一旦コメントアウトします
+  # def filename
+  #   "#{@environment}_#{end_point.gsub('api/', '').gsub('/', '_')}_#{@broadcast_provider_id}_#{Time.now.strftime('%Y%m%d%H%M%S')}"
+  # end
 end
