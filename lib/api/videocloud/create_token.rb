@@ -1,13 +1,13 @@
-class VideoCloud
+class CreateToken
   require_relative '../../../library'
 
   def exec
-    accress_token = create_access_token # rubocop:disable Lint/UselessAssignment
+    access_token
   end
 
   private
 
-  def create_access_token
+  def access_token
     client_id = ENV['VIDEO_CLOUD_CLIENT_ID']
     client_secret = ENV['VIDEO_CLOUD_CLIENT_SECRET']
     basic_token = Base64.strict_encode64("#{client_id}:#{client_secret}")
