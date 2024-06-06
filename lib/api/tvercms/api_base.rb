@@ -6,7 +6,6 @@ class ApiBase
     @api_type = options[:api_type]
     @cookie = options[:cookie]
     @id = options[:id] || nil
-    @offset = options[:offset] || 0
     @url = options[:url]
     @params = params
   end
@@ -18,8 +17,8 @@ class ApiBase
       response = api_get
       results << JSON.parse(response.body)['result']
       total = JSON.parse(response.body)['paging']['total']
-      @offset = JSON.parse(response.body)['paging']['offset']
-      break if total <= @offset
+      @params[:offset] = JSON.parse(response.body)['paging']['offset']
+      break if total <= @params[:offset]
     end
     JSON.pretty_generate(results)
   end
