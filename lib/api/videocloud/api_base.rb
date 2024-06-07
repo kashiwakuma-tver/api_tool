@@ -13,14 +13,16 @@ class ApiBase
 
   def exec_paging_api
     results = []
+    total = total_videos
+    init_offset = @params[:offset]
+    offset = @params[:offset]
     loop do
-      puts "#{@params[:offset]}件目からデータ取得中"
+      puts "#{offset}件目からデータ取得中"
       response = api_get
       puts response.body
-      # results << JSON.parse(response.body)['result']
-      # total = JSON.parse(response.body)['paging']['total']
-      # @params[:offset] = JSON.parse(response.body)['paging']['offset']
-      # break if total <= @params[:offset]
+      results << JSON.parse(response.body)
+      offset += init_offset
+      break if total <= offset
     end
     JSON.pretty_generate(results)
   end
@@ -32,9 +34,18 @@ class ApiBase
 
   private
 
+  def total_videos
+    response = Faraday.new(url: @url).get("#{@account_id}/counts/videos") do |req|
+      req.headers['Content-Type'] = 'application/json'
+      req.headers['Authorization'] = "Bearer #{@token}"
+      @params&.each do |k, v|
+        req.params[k] = v
+      end
+    end
+    JSON.parse(response.body)['count']
+  end
+
   def api_get
-    puts @url
-    puts end_point
     Faraday.new(url: @url).get(end_point) do |req|
       req.headers['Content-Type'] = 'application/json'
       req.headers['Authorization'] = "Bearer #{@token}"

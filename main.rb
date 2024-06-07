@@ -75,4 +75,4 @@ account_id = yaml[:tver]
 puts account_id
 token = CreateToken.new.exec
 
-puts GetVideo.new({ api_type: 'videos', token:, account_id:, url: 'https://cms.api.brightcove.com/v1/accounts' }, { offset: 0 }).get_videos
+puts GetVideo.new({ api_type: 'videos', token:, account_id:, url: 'https://cms.api.brightcove.com/v1/accounts' }, { offset: 100 }).get_videos
