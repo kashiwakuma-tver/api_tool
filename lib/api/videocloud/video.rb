@@ -1,4 +1,4 @@
-class GetVideo
+class Video
   require_relative 'api_base'
 
   def initialize(options = {}, params = {})
@@ -6,11 +6,11 @@ class GetVideo
     @params = params
   end
 
-  def get_videos
+  def videos
     ApiBase.new(@options, @params).exec_paging_api
   end
 
-  def get_video
+  def video
     ApiBase.new(@options, @params).exec_api
   end
 end
