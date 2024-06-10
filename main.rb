@@ -87,15 +87,16 @@ url = { local: ENV['LOCAL_TVER_CMS_URL'],
 ### params
 ### クエリパラメータを指定する。VideoCloudAPIドキュメントに沿って指定する
 
+#### VideoCloud ID及びtoken取得 ####
 # yaml = YAML.load_file('videocloud_accounts.yaml')
 # account_id = yaml[:tver]
 # token = CreateToken.new.exec
 
 #### GetVideo系 ####
 # GetVideo一覧
-# puts Video.new({ api_type: 'videos', token:, account_id:, url: 'https://cms.api.brightcove.com/v1/accounts' }, { offset: 100 }).videos
+# puts Video.new({ api_type: 'videos', token:, account_id:, url: ENV['VIDEO_CLOUD_CMS_API'] }, { offset: 100 }).videos
 # GetVideo取得
-# puts Video.new({ api_type: 'videos', token:, account_id:, url: 'https://cms.api.brightcove.com/v1/accounts' }, { q: 'reference_id:tver5pohgn' }).video
+# puts Video.new({ api_type: 'videos', token:, account_id:, url: ENV['VIDEO_CLOUD_CMS_API'] }, { q: 'reference_id:tver5pohgn' }).video
 
 #### IngestJob系 ####
-# puts IngestJob.new({ api_type: 'ingest_jobs', token:, account_id:, video_id: '6347665424112', url: 'https://cms.api.brightcove.com/v1/accounts' }, { offset: 100 }).jobs
+# puts IngestJob.new({ api_type: 'ingest_jobs', token:, account_id:, video_id: '6347665424112', url: ENV['VIDEO_CLOUD_CMS_API'] }, { offset: 100 }).jobs
