@@ -20,7 +20,7 @@ class ApiBase
       @params[:offset] = JSON.parse(response.body)['paging']['offset']
       break if total <= @params[:offset]
     end
-    JSON.pretty_generate(results)
+    results
   end
 
   def exec_api

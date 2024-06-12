@@ -33,7 +33,7 @@ url = { local: ENV['LOCAL_TVER_CMS_URL'],
         prd: ENV['PRD_TVER_CMS_URL'] }
 
 #### TVerCMSAPI実行に必要なsession cookieを取得 ####
-# cookie = Auth.new(url[:dev]).manager_tver_cookie_value
+cookie = Auth.new(url[:dev]).manager_tver_cookie_value
 
 #### episode系 ####
 # VODエピソード一覧
@@ -57,7 +57,7 @@ url = { local: ENV['LOCAL_TVER_CMS_URL'],
 # puts Season.new({ api_type: 'series/sr30gynbcab/season', id: 'ssyzt9vf3k7', cookie:, url: url[:dev] }).series_season
 
 #### VOD管理系 ####
-# Vod.new({ api_type: 'vod', cookie:, url: url[:dev] }).vod
+# puts Vod.new({ api_type: 'vod', cookie:, url: url[:dev] }).vod
 # キー局+TVerの情報が一括で欲しい場合
 # KEY_BROADCAST_PROVIDER_IDS.each do |bpid|
 #   puts Vod.new({ api_type: 'vod', cookie:, url: url[:dev], id: bpid }).vod

@@ -1,4 +1,4 @@
-class ApiBase
+class VideoCloudApiBase
   require_relative 'create_token'
   require_relative '../../../library'
 
@@ -23,7 +23,7 @@ class ApiBase
       offset += init_offset
       break if total <= offset
     end
-    JSON.pretty_generate(results)
+    JSON.parse(response.body)
   end
 
   def exec_api

@@ -16,7 +16,6 @@ class Auth
     if Dir.exist?("#{USER_DATA_DIR}/AutofillStates")
       driver_options.add_argument('--headless=new')
       driver_options.add_argument('--remote-debugging-port=9222')
-      implicit_wait = 0
     end
 
     driver = Selenium::WebDriver.for(:chrome, options: driver_options)
