@@ -29,9 +29,4 @@ class ContentMaster
 
     "/api/v1/#{@api_type}"
   end
-
-  # 一旦コメントアウトします
-  # def filename
-  #   "#{@environment}_#{end_point.gsub('api/', '').gsub('/', '_')}_#{@broadcast_provider_id}_#{Time.now.strftime('%Y%m%d%H%M%S')}"
-  # end
 end

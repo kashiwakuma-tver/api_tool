@@ -33,31 +33,31 @@ url = { local: ENV['LOCAL_TVER_CMS_URL'],
         prd: ENV['PRD_TVER_CMS_URL'] }
 
 #### TVerCMSAPI実行に必要なsession cookieを取得 ####
-cookie = Auth.new(url[:dev]).manager_tver_cookie_value
+cookie = TverCMS::Auth.new(url[:dev]).manager_tver_cookie_value
 
 #### episode系 ####
 # VODエピソード一覧
-# puts Episode.new({ api_type: 'episode/vod', cookie:, url: url[:dev] }, { offset: 9000 }).episode_vods
+# puts TverCMS::Episode.new({ api_type: 'episode/vod', cookie:, url: url[:dev] }, { offset: 9000 }).episode_vods
 
 # VODエピソード取得
-# puts Episode.new({ api_type: 'episode/vod', cookie:, id: 'epljgx7ad7t', url: url[:dev] }).episode_vod
+# puts TverCMS::Episode.new({ api_type: 'episode/vod', cookie:, id: 'epljgx7ad7t', url: url[:dev] }).episode_vod
 
 # LIVEエピソード一覧
-# Episode.new({ api_type: 'episode/live', cookie:, url: url[:dev] }, { offset: 800 }).episode_lives
+# puts TverCMS::Episode.new({ api_type: 'episode/live', cookie:, url: url[:dev] }, { offset: 800 }).episode_lives
 
 # LIVEエピソード取得
-# Episode.new({ api_type: 'episode/live', cookie:, id: 'leyd4bt4dsv', url: url[:dev] }).episode_live
+# puts TverCMS::Episode.new({ api_type: 'episode/live', cookie:, id: 'leyd4bt4dsv', url: url[:dev] }).episode_live
 
 #### series系 ####
-# puts Series.new({ api_type: 'series', cookie:, url: url[:dev] }, { offset: 1500 }).serieses
-# puts Series.new({ api_type: 'series', cookie:, id: 'srm04h7ptuh', url: url[:dev] }).series
+# puts TverCMS::Series.new({ api_type: 'series', cookie:, url: url[:dev] }, { offset: 1500 }).serieses
+# puts TverCMS::Series.new({ api_type: 'series', cookie:, id: 'srm04h7ptuh', url: url[:dev] }).series
 
 #### season系 ####
-# puts Season.new({ api_type: 'series/sr30gynbcab/season', cookie:, url: url[:dev] }).series_seasons
-# puts Season.new({ api_type: 'series/sr30gynbcab/season', id: 'ssyzt9vf3k7', cookie:, url: url[:dev] }).series_season
+# puts TverCMS::Season.new({ api_type: 'series/sr30gynbcab/season', cookie:, url: url[:dev] }).series_seasons
+# puts TverCMS::Season.new({ api_type: 'series/sr30gynbcab/season', id: 'ssyzt9vf3k7', cookie:, url: url[:dev] }).series_season
 
 #### VOD管理系 ####
-# puts Vod.new({ api_type: 'vod', cookie:, url: url[:dev] }).vod
+# puts TverCMS::Vod.new({ api_type: 'vod', cookie:, url: url[:dev] }).vod
 # キー局+TVerの情報が一括で欲しい場合
 # KEY_BROADCAST_PROVIDER_IDS.each do |bpid|
 #   puts Vod.new({ api_type: 'vod', cookie:, url: url[:dev], id: bpid }).vod
@@ -88,15 +88,15 @@ cookie = Auth.new(url[:dev]).manager_tver_cookie_value
 ### クエリパラメータを指定する。VideoCloudAPIドキュメントに沿って指定する
 
 #### VideoCloud ID及びtoken取得 ####
-# yaml = YAML.load_file('videocloud_accounts.yaml')
-# account_id = yaml[:tver]
-# token = CreateToken.new.exec
+yaml = YAML.load_file('videocloud_accounts.yaml')
+account_id = yaml[:tver]
+token = VideoCloud::CreateToken.new.exec
 
 #### GetVideo系 ####
 # GetVideo一覧
-# puts Video.new({ api_type: 'videos', token:, account_id:, url: ENV['VIDEO_CLOUD_CMS_API'] }, { offset: 100 }).videos
+puts VideoCloud::Video.new({ api_type: 'videos', token:, account_id:, url: ENV['VIDEO_CLOUD_CMS_API'] }, { offset: 100 }).videos
 # GetVideo取得
-# puts Video.new({ api_type: 'videos', token:, account_id:, url: ENV['VIDEO_CLOUD_CMS_API'] }, { q: 'reference_id:tver5pohgn' }).video
+puts VideoCloud::Video.new({ api_type: 'videos', token:, account_id:, url: ENV['VIDEO_CLOUD_CMS_API'] }, { q: 'reference_id:tver5pohgn' }).video
 
 #### IngestJob系 ####
-# puts IngestJob.new({ api_type: 'ingest_jobs', token:, account_id:, video_id: '6347665424112', url: ENV['VIDEO_CLOUD_CMS_API'] }, { offset: 100 }).jobs
+puts VideoCloud::IngestJob.new({ api_type: 'ingest_jobs', token:, account_id:, video_id: '6347665424112', url: ENV['VIDEO_CLOUD_CMS_API'] }, { offset: 100 }).jobs
