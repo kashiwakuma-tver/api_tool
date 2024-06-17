@@ -60,7 +60,7 @@ cookie = TverCMS::Auth.new(url[:dev]).manager_tver_cookie_value
 # puts TverCMS::Vod.new({ api_type: 'vod', cookie:, url: url[:dev] }).vod
 # キー局+TVerの情報が一括で欲しい場合
 # KEY_BROADCAST_PROVIDER_IDS.each do |bpid|
-#   puts Vod.new({ api_type: 'vod', cookie:, url: url[:dev], id: bpid }).vod
+#   puts TverCMS::Vod.new({ api_type: 'vod', cookie:, url: url[:dev], id: bpid }).vod
 # end
 
 #### ファイル出力したい場合は以下も実行
