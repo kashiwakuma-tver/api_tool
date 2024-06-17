@@ -88,15 +88,15 @@ cookie = TverCMS::Auth.new(url[:dev]).manager_tver_cookie_value
 ### クエリパラメータを指定する。VideoCloudAPIドキュメントに沿って指定する
 
 #### VideoCloud ID及びtoken取得 ####
-yaml = YAML.load_file('videocloud_accounts.yaml')
-account_id = yaml[:tver]
-token = VideoCloud::CreateToken.new.exec
+# yaml = YAML.load_file('videocloud_accounts.yaml')
+# account_id = yaml[:tver]
+# token = VideoCloud::CreateToken.new.exec
 
 #### GetVideo系 ####
 # GetVideo一覧
-puts VideoCloud::Video.new({ api_type: 'videos', token:, account_id:, url: ENV['VIDEO_CLOUD_CMS_API'] }, { offset: 100 }).videos
+# puts VideoCloud::Video.new({ api_type: 'videos', token:, account_id:, url: ENV['VIDEO_CLOUD_CMS_API'] }, { offset: 100 }).videos
 # GetVideo取得
-puts VideoCloud::Video.new({ api_type: 'videos', token:, account_id:, url: ENV['VIDEO_CLOUD_CMS_API'] }, { q: 'reference_id:tver5pohgn' }).video
+# puts VideoCloud::Video.new({ api_type: 'videos', token:, account_id:, url: ENV['VIDEO_CLOUD_CMS_API'] }, { q: 'reference_id:tver5pohgn' }).video
 
 #### IngestJob系 ####
-puts VideoCloud::IngestJob.new({ api_type: 'ingest_jobs', token:, account_id:, video_id: '6347665424112', url: ENV['VIDEO_CLOUD_CMS_API'] }, { offset: 100 }).jobs
+# puts VideoCloud::IngestJob.new({ api_type: 'ingest_jobs', token:, account_id:, video_id: '6347665424112', url: ENV['VIDEO_CLOUD_CMS_API'] }, { offset: 100 }).jobs
