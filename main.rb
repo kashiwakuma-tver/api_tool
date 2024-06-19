@@ -33,7 +33,7 @@ url = { local: ENV['LOCAL_TVER_CMS_URL'],
         prd: ENV['PRD_TVER_CMS_URL'] }
 
 #### TVerCMSAPI実行に必要なsession cookieを取得 ####
-cookie = TverCMS::Auth.new(url[:dev]).manager_tver_cookie_value
+# cookie = TverCMS::Auth.new(url[:dev]).manager_tver_cookie_value
 
 #### episode系 ####
 # VODエピソード一覧
@@ -68,10 +68,10 @@ cookie = TverCMS::Auth.new(url[:dev]).manager_tver_cookie_value
 # CreateFiles.json_to_csv('file_name.csv', json)
 
 #### ContentMaster ####
-# yaml = YAML.load_file('meta_url.yaml')
-# url = yaml[:dev][:cx][:url]
-# token = yaml[:dev][:cx][:token]
-# puts ContentMaster.new({ url:, token:, api_type: 'series', id: nil }, { target: '1713315300' }).exec_api
+yaml = YAML.load_file('meta_url.yaml')
+url = yaml[:dev][:mbs][:url]
+token = yaml[:dev][:mbs][:token]
+puts ContentMaster.new({ url:, token:, api_type: 'episode/vod', id: nil }, { target: '1713315300' }).exec_api
 
 ##################################################
 ################# VideoCloud API #################

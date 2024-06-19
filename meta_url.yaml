@@ -15,8 +15,8 @@
     :url: 'https://yspt6e292k.execute-api.ap-northeast-1.amazonaws.com'
     :token: 'oQuoBozFpJ6oHIkQW572043l5EF1sbFt3ZPNyyqX'
   :mbs:
-    :url:
-    :token:
+    :url: 'https://tver-meta.dev.dizm.mbs.jp'
+    :token: '46y*TgYT4zoZPBEzetaj_Neb4v4VoWEFp2oV'
   :ktv:
     :url: 'https://t4aa6trqo0.execute-api.ap-northeast-1.amazonaws.com'
     :token: 'pY4HJb79Na4nI4giBWFBVTgUwbJlCsh7SCbSUAnj'
@@ -24,8 +24,8 @@
     :url: 'https://cu.aws-ytv.com'
     :token: 'frSl.yciqOyhPBA9w6as6kJRR1ZWlBTM'
   :abc:
-    :url:
-    :token:
+    :url: 'https://tver-meta-api.dev-cuma.digiasa-services.com'
+    :token: 'mYRGFR4hy3R5fHF3TPP4GYAnR7pALtPmeNr4ENG3tn3TThTrfrrL3EfRfJRT3THArLpAhFH5rA74AnJYT3Jt7H'
   :tvo:
     :url: 'https://dev-tvocms.unixon.co.jp'
     :token: z4rwm2i9
@@ -41,8 +41,8 @@
     :url:
     :token:
   :tbs:
-    :url:
-    :token:
+    :url: 'https://prod.godigo-tverapp.tbs.co.jp'
+    :token: 'IpilzXhaqx7ljj8x9mrdG1U65rPCXiAg317hdjaq'
   :tx:
     :url: 'https://mdas-tver.api.tv-tokyo.co.jp'
     :token: 'gp0FLKvYAa1Wv0thv6bT7HaY2ltJfR4P'
@@ -50,14 +50,14 @@
     :url: 'https://5b1tx16t0a.execute-api.ap-northeast-1.amazonaws.com'
     :token: '8StDzL66eCfaz3ugUk3w272Fexr0mwBDY1iN9gg0'
   :mbs:
-    :url:
-    :token:
+    :url: 'https://tver-meta.dizm.mbs.jp'
+    :token: 'dsXTvLUnX*@gcbQuxLR*k_Q4V3q_pX@KoY@N'
   :ktv:
     :url: 'https://t4aa6trqo0.execute-api.ap-northeast-1.amazonaws.com'
     :token: 'pY4HJb79Na4nI4giBWFBVTgUwbJlCsh7SCbSUAnj'
   :ytv:
-    :url:
-    :token:
+    :url: 'https://cu.ytv.co.jp'
+    :token: 'xB6CMaNN9l57IXItDEFUmxGp1.u870tD'
   :abc:
     :url:
     :token:
@@ -65,5 +65,5 @@
     :url: 'https://tvo-cms.unixon.co.jp'
     :token: 'ae340d36'
   :nhk:
-    :url:
-    :token:
+    :url: 'https://catchup.nhk.or.jp'
+    :token: 'iRDmWp7VYT!Tz//PjazsCZpXSgVmj/(T'
