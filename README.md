@@ -31,3 +31,4 @@
 * [TVerCMS](https://s3-ap-northeast-1.amazonaws.com/tverservice-docs-omniscient/reference/cms/index.html#cms-episode-vod-get)
 * [STREAKS API](https://docs.streaks.jp/api/#/)
 * [VideoCloud API](https://apis.support.brightcove.com/index.html)
+* [新メタコンマスAPI](https://precas.atlassian.net/wiki/spaces/spec2/pages/2208104461/VOD+API)

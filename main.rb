@@ -68,10 +68,13 @@ url = { local: ENV['LOCAL_TVER_CMS_URL'],
 # CreateFiles.json_to_csv('file_name.csv', json)
 
 #### ContentMaster ####
+### 実行方法 ###
+### api_type:実行するAPIを指定する。season, series,episode/vodのいずれか
+### target:取得対象として遡りたい年月日時分秒。エポック秒で指定
 yaml = YAML.load_file('meta_url.yaml')
-url = yaml[:dev][:mbs][:url]
-token = yaml[:dev][:mbs][:token]
-puts ContentMaster.new({ url:, token:, api_type: 'episode/vod', id: nil }, { target: '1713315300' }).exec_api
+url = yaml[:dev][:abc][:url]
+token = yaml[:dev][:abc][:token]
+puts ContentMaster.new({ url:, token:, api_type: 'episode/vod', id: nil }, { target: Time.new(2024, 6, 21, 13, 59, 59).to_i }).exec_api
 
 ##################################################
 ################# VideoCloud API #################
