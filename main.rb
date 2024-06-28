@@ -1,5 +1,5 @@
 require_relative 'lib/api/contentmaster/contentmaster'
-require_relative 'create_files'
+require_relative 'utility'
 require_relative 'library'
 
 Dir['lib/api/tvercms/*.rb'].each do |file|
@@ -67,14 +67,17 @@ url = { local: ENV['LOCAL_TVER_CMS_URL'],
 # CreateFiles.output_json('file_name.json', json)
 # CreateFiles.json_to_csv('file_name.csv', json)
 
+### Utility系実行サンプル ###
+# puts Utility.episode_ids_from_csv('vod_episodes_20240628123015.csv').count
+
 #### ContentMaster ####
 ### 実行方法 ###
 ### api_type:実行するAPIを指定する。season, series,episode/vodのいずれか
 ### target:取得対象として遡りたい年月日時分秒。エポック秒で指定
-yaml = YAML.load_file('meta_url.yaml')
-url = yaml[:dev][:abc][:url]
-token = yaml[:dev][:abc][:token]
-puts ContentMaster.new({ url:, token:, api_type: 'episode/vod', id: nil }, { target: Time.new(2024, 6, 21, 13, 59, 59).to_i }).exec_api
+# yaml = YAML.load_file('meta_url.yaml')
+# url = yaml[:dev][:abc][:url]
+# token = yaml[:dev][:abc][:token]
+# puts ContentMaster.new({ url:, token:, api_type: 'episode/vod', id: nil }, { target: Time.new(2024, 6, 21, 13, 59, 59).to_i }).exec_api
 
 ##################################################
 ################# VideoCloud API #################
