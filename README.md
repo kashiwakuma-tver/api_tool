@@ -3,12 +3,12 @@
 * このツールはTVerCMSのAPIを使ってCMSの情報を取得するためのツールである
 
 ## 使い方
-1. main.rbを編集する。
+1. {tvercms|contentmaster|videocloud}.rbを編集する。
   1.実行したいAPIをコメントアウトする。例えばVODエピソード一覧APIを実行したい場合は「Episode.new~~.exec_paging_api」をコメントアウトする
   2. optionsとparamsを指定する。大まかには以下の通りだが、詳細はmain.rbを参照のこと
     1. options・・・実行するAPI、実行環境、IDなどを指定する
     2. params・・・API実行時に指定するクエリパラメータ。必要に応じてAPIリファレンスの仕様に沿って指定する
-2. ターミナルでmain.rbのあるディレクトリに移動し「ruby main.rb」を実行する
+2. ターミナルで{tvercms|contentmaster|videocloud}.rbのあるディレクトリに移動し「ruby {tvercms|contentmaster|videocloud}.rb」を実行する
     
 
 ## 対応API
