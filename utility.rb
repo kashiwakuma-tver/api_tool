@@ -1,6 +1,4 @@
 class Utility
-  require_relative 'library'
-
   def self.episode_ids_from_csv(file_name)
     episode_ids = []
     CSV.foreach(file_name, headers: false) do |csv|

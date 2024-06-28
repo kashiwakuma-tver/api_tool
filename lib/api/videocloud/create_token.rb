@@ -1,6 +1,6 @@
 class VideoCloud
   class CreateToken
-    require_relative '../../../library'
+    require_relative '../../../requires'
 
     def exec
       access_token

@@ -1,7 +1,7 @@
 class VideoCloud
   class ApiBase
     require_relative 'create_token'
-    require_relative '../../../library'
+    require_relative '../../../requires'
 
     def initialize(options = {}, params = {})
       @api_type = options[:api_type]
@@ -35,7 +35,6 @@ class VideoCloud
     private
 
     def total_videos
-      puts @url
       response = Faraday.new(url: @url).get("#{@account_id}/counts/videos") do |req|
         req.headers['Content-Type'] = 'application/json'
         req.headers['Authorization'] = "Bearer #{@token}"
