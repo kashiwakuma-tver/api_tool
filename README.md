@@ -1,6 +1,24 @@
 # TVerCMS関連APIツール
 ## このツールについて
 * このツールはTVerCMSのAPIを使ってCMSの情報を取得するためのツールである
+* Mac OSで開発を行っており、動作確認もMac OSのみ。Intel CPUのMacでは動作未確認
+
+## セットアップ
+1. Rubyをインストールする
+  * [こちら](https://github.com/rbenv/rbenv#installation)の手順に沿ってrbenvでインストール。rbenv使わなくても動作には問題ないはず
+  * バージョンは3.2.3で動作確認済
+
+2. 環境変数を設定する
+コード内では一部環境変数を設定しているため、以下の通りローカル環境の環境変数に指定しておく
+```
+export VIDEO_CLOUD_CLIENT_ID=(知っている人に聞いて下さい)
+VIDEO_CLOUD_CLIENT_SECRET=(知っている人に聞いて下さい)
+export LOCAL_TVER_CMS_URL=http://localhost:8610
+export DEV_TVER_CMS_URL=https://service-manager-tenjin-devintegrate.in-tver.jp
+export STG_TVER_CMS_URL=https://service-manager-gion-staging.in-tver.jp
+export PRD_TVER_CMS_URL=https://service-manager.in-tver.jp
+export VIDEO_CLOUD_CMS_API=https://cms.api.brightcove.com/v1/accounts
+```
 
 ## 使い方
 1. {tvercms|contentmaster|videocloud}.rbを編集する。
@@ -23,7 +41,9 @@
   * シーズン取得
   * VOD一覧
 * VideoCloud
-  * (準備中)
+  * GetVideo
+  * DynamicIntest
+* コンマスAPI
 * STREAKS
   * (準備中)
 
