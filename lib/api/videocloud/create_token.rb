@@ -2,12 +2,6 @@ class VideoCloud
   class CreateToken
     require_relative '../../../requires'
 
-    def exec
-      access_token
-    end
-
-    private
-
     def access_token
       client_id = ENV['VIDEO_CLOUD_CLIENT_ID']
       client_secret = ENV['VIDEO_CLOUD_CLIENT_SECRET']

@@ -17,7 +17,7 @@ require_relative 'requires'
 #### VideoCloud ID及びtoken取得 ####
 yaml = YAML.load_file('videocloud_accounts.yaml')
 account_id = yaml[:tver]
-token = VideoCloud::CreateToken.new.exec
+token = VideoCloud::CreateToken.new.access_token
 
 #### GetVideo系 ####
 ## GetVideo一覧
