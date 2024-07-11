@@ -49,3 +49,18 @@ cookie = TverCMS::Auth.new(url[:dev]).manager_tver_cookie_value
 # KEY_BROADCAST_PROVIDER_IDS.each do |bpid|
 #   puts TverCMS::Vod.new({ api_type: 'vod', cookie:, url: url[:dev], id: bpid }).vod
 # end
+
+#### talent系 ####
+# results = TverCMS::Talent.new({ api_type: 'talent', cookie:, url: url[:dev] }, { offset: 190_300 }).talents
+
+# talents/:talentidのURLをCSV化する
+CSV.open('talents.csv', 'w') do |csv|
+  base_url = 'https://tver.jp/talents/'
+  jsons = JSON.parse(results.to_json)
+  csv << %w[url name code group_name]
+  jsons.each do |json|
+    json.each do |j|
+      csv << ["#{base_url}#{j.values[0]}", j.values[2], j.values[3], j.values[29]]
+    end
+  end
+end
