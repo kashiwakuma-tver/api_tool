@@ -38,8 +38,8 @@
     :url: 'https://feed.kronos.play.jp'
     :token: '2WLLWa4BN9riKe2HXRcCauHfPWhYMspKycgZWbRDUQV2Lp5sZ5tYVsDr2KudeMe7'
   :ex:
-    :url:
-    :token:
+    :url: 'https://douga-api.tv-asahi.co.jp'
+    :token: 
   :tbs:
     :url: 'https://prod.godigo-tverapp.tbs.co.jp'
     :token: 'IpilzXhaqx7ljj8x9mrdG1U65rPCXiAg317hdjaq'
@@ -59,8 +59,8 @@
     :url: 'https://cu.ytv.co.jp'
     :token: 'xB6CMaNN9l57IXItDEFUmxGp1.u870tD'
   :abc:
-    :url:
-    :token:
+    :url: 'https://tver-meta-api.dev-cuma.digiasa-services.com'
+    :token: 'mYRGFR4hy3R5fHF3TPP4GYAnR7pALtPmeNr4ENG3tn3TThTrfrrL3EfRfJRT3THArLpAhFH5rA74AnJYT3Jt7H'
   :tvo:
     :url: 'https://tvo-cms.unixon.co.jp'
     :token: 'ae340d36'
