@@ -15,8 +15,7 @@ require_relative 'requires'
 ### クエリパラメータを指定する。VideoCloudAPIドキュメントに沿って指定する
 
 #### VideoCloud ID及びtoken取得 ####
-yaml = YAML.load_file('videocloud_accounts.yaml')
-account_id = yaml[:tver]
+account_id = ENV['VIDEO_CLOUD_ACCOUNT_TVER']
 token = VideoCloud::CreateToken.new.access_token
 
 #### GetVideo系 ####
