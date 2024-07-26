@@ -10,6 +10,7 @@
 
 2. 環境変数を設定する
 コード内では一部環境変数を設定しているため、以下の通りローカル環境の環境変数に指定しておく
+VIDEO_CLOUT_ACCOUNT_IDは局ごとに存在するので、全局分登録しておくとよい
 ```
 export VIDEO_CLOUD_CLIENT_ID=(知っている人に聞いて下さい)
 export VIDEO_CLOUD_CLIENT_SECRET=(知っている人に聞いて下さい)
@@ -18,6 +19,7 @@ export DEV_TVER_CMS_URL=https://service-manager-tenjin-devintegrate.in-tver.jp
 export STG_TVER_CMS_URL=https://service-manager-gion-staging.in-tver.jp
 export PRD_TVER_CMS_URL=https://service-manager.in-tver.jp
 export VIDEO_CLOUD_CMS_API=https://cms.api.brightcove.com/v1/accounts
+export VIDEO_CLOUD_ACCOUNT_{局ID}=(知っている人に聞いて下さい)
 ```
 
 ## 使い方
@@ -44,8 +46,7 @@ export VIDEO_CLOUD_CMS_API=https://cms.api.brightcove.com/v1/accounts
   * GetVideo
   * DynamicIntest
 * コンマスAPI
-* STREAKS
-  * (準備中)
+* STREAKS(準備中)
 
 ## APIリファレンス情報
 * [TVerCMS](https://s3-ap-northeast-1.amazonaws.com/tverservice-docs-omniscient/reference/cms/index.html#cms-episode-vod-get)
