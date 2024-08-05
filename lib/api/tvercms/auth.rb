@@ -3,8 +3,9 @@ class TverCMS
     GOOGLE_AUTH_XPATH = '//*[@id="root"]/div[1]/div[1]/div[2]/div/div[2]/div/div/div[1]/div/div[3]/a/img'.freeze
     USER_DATA_DIR = '/Users/kashiwakuma/selenium_chrome_profile/'.freeze
 
-    def initialize(url)
+    def initialize(url, skip_two_factor_auth)
       @url = url
+      @skip_two_factor_auth = skip_two_factor_auth
     end
 
     def manager_tver_cookie_value
@@ -12,9 +13,7 @@ class TverCMS
       driver_options.add_argument("--user-data-dir=#{USER_DATA_DIR}")
       implicit_wait = 3
 
-      # Chromeユーザプロファイルのディレクトリが空じゃないかで判定なので
-      # 具体的なファイル名は適当だが、見直しが必要
-      if Dir.exist?("#{USER_DATA_DIR}/AutofillStates")
+      if @skip_two_factor_auth.present?
         driver_options.add_argument('--headless=new')
         driver_options.add_argument('--remote-debugging-port=9222')
       end

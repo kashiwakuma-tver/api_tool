@@ -19,7 +19,7 @@ url = { local: ENV['LOCAL_TVER_CMS_URL'],
 ### クエリパラメータを指定する。CMSリファレンスに沿って指定する
 
 #### TVerCMSAPI実行に必要なsession cookieを取得 ####
-cookie = TverCMS::Auth.new(url[:dev], false).manager_tver_cookie_value
+cookie = TverCMS::Auth.new(url[:dev], true).manager_tver_cookie_value
 
 #### episode系 ####
 # VODエピソード一覧
@@ -51,7 +51,7 @@ cookie = TverCMS::Auth.new(url[:dev], false).manager_tver_cookie_value
 # end
 
 #### talent系 ####
-results = TverCMS::Talent.new({ api_type: 'talent', cookie:, url: url[:dev] }, { offset: 0 }).talents
+results = TverCMS::Talent.new({ api_type: 'talent', cookie:, url: url[:dev] }, { offset: 190_700 }).talents
 
 # talents一覧をjsonlにする（ナターシャ向け）
 CSV.open('talents_dev.csv', 'w') do |csv|
