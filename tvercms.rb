@@ -19,7 +19,7 @@ url = { local: ENV['LOCAL_TVER_CMS_URL'],
 ### クエリパラメータを指定する。CMSリファレンスに沿って指定する
 
 #### TVerCMSAPI実行に必要なsession cookieを取得 ####
-cookie = TverCMS::Auth.new(url[:dev], true).manager_tver_cookie_value
+cookie = TverCMS::Auth.new(url[:prd], false).manager_tver_cookie_value
 
 #### episode系 ####
 # VODエピソード一覧
@@ -51,21 +51,22 @@ cookie = TverCMS::Auth.new(url[:dev], true).manager_tver_cookie_value
 # end
 
 #### talent系 ####
-results = TverCMS::Talent.new({ api_type: 'talent', cookie:, url: url[:dev] }, { offset: 190_700 }).talents
+results = TverCMS::Talent.new({ api_type: 'talent', cookie:, url: url[:prd] }, { offset: 0 }).talents
 
 # talents一覧をjsonlにする（ナターシャ向け）
-CSV.open('talents_dev.csv', 'w') do |csv|
+CSV.open('talents.csv', 'w') do |csv|
   jsons = JSON.parse(results.to_json)
   csv << %w[url talent_name group_name genre1 genre2 genre3 genre4 genre5 updated_at]
   jsons.each do |json|
     json.each do |j|
-      url = "https://tverapp.page.link/?link=https://tver.jp/talents/#{j['id']}&apn=jp.hamitv.hamiand1&isi=830340223&ibi=jp.hamitv.hamitvapp1&efr=1"
+      url = "https://tver.jp/talents/#{j['id']}"
+      # url = "https://tverapp.page.link/?link=https://tver.jp/talents/#{j['id']}&apn=jp.hamitv.hamiand1&isi=830340223&ibi=jp.hamitv.hamitvapp1&efr=1"
       csv << [url, j['name'], j['group_name'], j['genre1'], j['genre2'], j['genre3'], j['genre4'], j['genre5'], j['updated_at']]
     end
   end
 end
 
-CSV.foreach('talents_dev.csv', headers: true) do |row|
+CSV.foreach('talents.csv', headers: true) do |row|
   # 行をハッシュとして取得
   row_hash = row.to_h
 
@@ -73,7 +74,7 @@ CSV.foreach('talents_dev.csv', headers: true) do |row|
   json_line = JSON.generate(row_hash, escape_slashes: false)
 
   # JSONLファイルに書き込む
-  File.open('talents_dev.jsonl', 'a') do |file|
+  File.open('talents.jsonl', 'a') do |file|
     file.puts(json_line)
   end
 end

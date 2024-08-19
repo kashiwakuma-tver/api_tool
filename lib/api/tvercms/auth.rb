@@ -13,7 +13,7 @@ class TverCMS
       driver_options.add_argument("--user-data-dir=#{USER_DATA_DIR}")
       implicit_wait = 3
 
-      if @skip_two_factor_auth.present?
+      if skip_two_factor_auth?
         driver_options.add_argument('--headless=new')
         driver_options.add_argument('--remote-debugging-port=9222')
       end
@@ -32,6 +32,12 @@ class TverCMS
       end
 
       driver.manage.cookie_named('manager-tver')[:value]
+    end
+
+    private
+
+    def skip_two_factor_auth?
+      @skip_two_factor_auth
     end
   end
 end
