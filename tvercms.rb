@@ -51,30 +51,30 @@ cookie = TverCMS::Auth.new(url[:prd], false).manager_tver_cookie_value
 # end
 
 #### talent系 ####
-results = TverCMS::Talent.new({ api_type: 'talent', cookie:, url: url[:prd] }, { offset: 0 }).talents
+# results = TverCMS::Talent.new({ api_type: 'talent', cookie:, url: url[:prd] }, { offset: 0 }).talents
 
-# talents一覧をjsonlにする（ナターシャ向け）
-CSV.open('talents.csv', 'w') do |csv|
-  jsons = JSON.parse(results.to_json)
-  csv << %w[url talent_name group_name genre1 genre2 genre3 genre4 genre5 updated_at]
-  jsons.each do |json|
-    json.each do |j|
-      url = "https://tver.jp/talents/#{j['id']}"
-      # url = "https://tverapp.page.link/?link=https://tver.jp/talents/#{j['id']}&apn=jp.hamitv.hamiand1&isi=830340223&ibi=jp.hamitv.hamitvapp1&efr=1"
-      csv << [url, j['name'], j['group_name'], j['genre1'], j['genre2'], j['genre3'], j['genre4'], j['genre5'], j['updated_at']]
-    end
-  end
-end
+# # talents一覧をjsonlにする（ナターシャ向け）
+# CSV.open('talents.csv', 'w') do |csv|
+#   jsons = JSON.parse(results.to_json)
+#   csv << %w[url talent_name group_name genre1 genre2 genre3 genre4 genre5 updated_at]
+#   jsons.each do |json|
+#     json.each do |j|
+#       url = "https://tver.jp/talents/#{j['id']}"
+#       # url = "https://tverapp.page.link/?link=https://tver.jp/talents/#{j['id']}&apn=jp.hamitv.hamiand1&isi=830340223&ibi=jp.hamitv.hamitvapp1&efr=1"
+#       csv << [url, j['name'], j['group_name'], j['genre1'], j['genre2'], j['genre3'], j['genre4'], j['genre5'], j['updated_at']]
+#     end
+#   end
+# end
 
-CSV.foreach('talents.csv', headers: true) do |row|
-  # 行をハッシュとして取得
-  row_hash = row.to_h
+# CSV.foreach('talents.csv', headers: true) do |row|
+#   # 行をハッシュとして取得
+#   row_hash = row.to_h
 
-  # ハッシュをJSON形式に変換
-  json_line = JSON.generate(row_hash, escape_slashes: false)
+#   # ハッシュをJSON形式に変換
+#   json_line = JSON.generate(row_hash, escape_slashes: false)
 
-  # JSONLファイルに書き込む
-  File.open('talents.jsonl', 'a') do |file|
-    file.puts(json_line)
-  end
-end
+#   # JSONLファイルに書き込む
+#   File.open('talents.jsonl', 'a') do |file|
+#     file.puts(json_line)
+#   end
+# end
